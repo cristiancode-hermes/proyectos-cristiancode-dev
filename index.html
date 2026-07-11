@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>proyectos.cristiancode.dev</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,system-ui,sans-serif;background:linear-gradient(135deg,#0a0a0f 0%,#1a0a2e 50%,#0a0a0f 100%);color:#e2e2ea;min-height:100dvh;padding:clamp(16px,4vw,40px) clamp(12px,3vw,24px)}
+h1{font-size:clamp(1.6rem,4vw,2.8rem);color:#ffac02;margin-bottom:4px;letter-spacing:-0.5px;line-height:1.2}
+.subtitle{color:#a8a29e;font-size:clamp(13px,2vw,15px);margin-bottom:20px}
+.core{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.core a{background:#1c1917;padding:8px 18px;border-radius:8px;border:1px solid #292524;font-size:13px;font-weight:500;color:#818cf8;transition:all .2s}
+.core a:hover{background:#292524;border-color:#6366f1;color:#a5b4fc;text-decoration:none}
+.cat{margin-bottom:20px}
+.cat-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;color:#57534e;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.cat-title::after{content:'';flex:1;height:1px;background:#ffffff0a}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:4px}
+@media(max-width:480px){.grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}}
+.grid a{display:block;padding:5px 10px;border-radius:5px;font-size:13px;color:#d6d3d1;transition:all .12s}
+.grid a:hover{background:#1c1917;color:#ffac02;padding-left:14px;text-decoration:none}
+.stats{display:flex;gap:clamp(8px,2vw,20px);flex-wrap:wrap;margin-bottom:20px;padding:12px 16px;background:#14141e;border-radius:10px;border:1px solid #ffffff08}
+.stat{font-size:12px;color:#8888a0}
+.stat b{color:#e2e2ea;font-size:14px}
+footer{margin-top:28px;font-size:12px;color:#57534e;text-align:center}
+.search{width:100%;max-width:320px;padding:8px 12px;border-radius:8px;border:1px solid #292524;background:#14141e;color:#e2e2ea;font-size:13px;margin-bottom:16px;outline:none;transition:border .2s}
+.search:focus{border-color:#6366f1}
+.search::placeholder{color:#55556a}
+</style></head><body>
+<div style="max-width:860px;margin:0 auto">
+<h1>⚡ proyectos.cristiancode.dev</h1>
+<p class="subtitle">Portfolio de Cristian — Proyectos Full-Stack</p>
+<div class="stats">
+<div class="stat"><b>33</b> proyectos</div>
+<div class="stat"><b>29</b> APIs NestJS</div>
+<div class="stat"><b>4</b> apps core</div>
+<div class="stat">✨ <b>SSL</b> nativo</div>
+</div>
+<div class="core">
+<a href="https://app.proyectos.cristiancode.dev">WebUI</a>
+<a href="https://dashboard.proyectos.cristiancode.dev">Dashboard</a>
+<a href="https://status.proyectos.cristiancode.dev">Status</a>
+<a href="https://devsnips.proyectos.cristiancode.dev">DevSnips</a>
+</div>
+<input class="search" type="text" id="filter" placeholder="🔍 Filtrar proyectos..." oninput="filterProjects(this.value)">
+<div class="cat"><div class="cat-title">Core</div><div class="grid">
+<a href="https://api-server.proyectos.cristiancode.dev">api-server</a>
+<a href="https://code-coach.proyectos.cristiancode.dev">code-coach</a>
+<a href="https://code-review.proyectos.cristiancode.dev">code-review</a>
+<a href="https://rag-kb.proyectos.cristiancode.dev">rag-kb</a>
+<a href="https://whisperer.proyectos.cristiancode.dev">whisperer</a>
+<a href="https://wiki.proyectos.cristiancode.dev">wiki</a>
+</div></div>
+<div class="cat"><div class="cat-title">Gestión</div><div class="grid">
+<a href="https://crm.proyectos.cristiancode.dev">crm</a>
+<a href="https://helpdesk.proyectos.cristiancode.dev">helpdesk</a>
+<a href="https://inventory.proyectos.cristiancode.dev">inventory</a>
+<a href="https://kanban.proyectos.cristiancode.dev">kanban</a>
+<a href="https://tasks.proyectos.cristiancode.dev">tasks</a>
+<a href="https://jobs.proyectos.cristiancode.dev">jobs</a>
+<a href="https://time-tracker.proyectos.cristiancode.dev">time-tracker</a>
+</div></div>
+<div class="cat"><div class="cat-title">Finanzas & Clientes</div><div class="grid">
+<a href="https://billing.proyectos.cristiancode.dev">billing</a>
+<a href="https://booking.proyectos.cristiancode.dev">booking</a>
+<a href="https://finance.proyectos.cristiancode.dev">finance</a>
+<a href="https://newsletter.proyectos.cristiancode.dev">newsletter</a>
+<a href="https://survey-engine.proyectos.cristiancode.dev">survey-engine</a>
+<a href="https://survey-studio.proyectos.cristiancode.dev">survey-studio</a>
+</div></div>
+<div class="cat"><div class="cat-title">Productividad</div><div class="grid">
+<a href="https://habits.proyectos.cristiancode.dev">habits</a>
+<a href="https://interview.proyectos.cristiancode.dev">interview</a>
+<a href="https://landing.proyectos.cristiancode.dev">landing</a>
+<a href="https://links.proyectos.cristiancode.dev">links</a>
+<a href="https://pomodoro.proyectos.cristiancode.dev">pomodoro</a>
+<a href="https://recipes.proyectos.cristiancode.dev">recipes</a>
+<a href="https://study.proyectos.cristiancode.dev">study</a>
+<a href="https://workout.proyectos.cristiancode.dev">workout</a>
+</div></div>
+<div class="cat"><div class="cat-title">Social & Contenido</div><div class="grid">
+<a href="https://events.proyectos.cristiancode.dev">events</a>
+<a href="https://snippets.proyectos.cristiancode.dev">snippets</a>
+<a href="https://social.proyectos.cristiancode.dev">social</a>
+<a href="https://tech-radar.proyectos.cristiancode.dev">tech-radar</a>
+<a href="https://entornos.proyectos.cristiancode.dev">entornos</a>
+</div></div>
+<footer>proyectos.cristiancode.dev · 33 proyectos · CristianCode.dev</footer>
+</div>
+<script>
+function filterProjects(q){q=q.toLowerCase();document.querySelectorAll('.grid').forEach(g=>{let v=0;g.querySelectorAll('a').forEach(a=>{const m=a.textContent.includes(q)||a.href.includes(q);a.style.display=m?'':'none';if(m)v++});g.previousElementSibling.style.display=v?'flex':'none'})}
+</script>
+</body></html>
