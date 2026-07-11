@@ -218,14 +218,14 @@ body{
   <!-- Header -->
   <header class="header">
     <div class="logo">⚡ proyectos</div>
-    <p class="subtitle">Portfolio de Cristian — <span>33+</span> proyectos full‑stack</p>
+    <p class="subtitle">Portfolio de Cristian — <span>36+</span> proyectos full‑stack</p>
   </header>
 
   <!-- Stats -->
   <div class="stats-bar">
-    <div class="stat-item"><div class="stat-icon">📦</div><div class="stat-value" id="statProjects">33</div><div class="stat-label">Proyectos</div></div>
-    <div class="stat-item"><div class="stat-icon">⚙️</div><div class="stat-value" id="statApis">29</div><div class="stat-label">APIs NestJS</div></div>
-    <div class="stat-item"><div class="stat-icon">🚀</div><div class="stat-value" id="statApps">4</div><div class="stat-label">Apps Core</div></div>
+    <div class="stat-item"><div class="stat-icon">📦</div><div class="stat-value" id="statProjects">36</div><div class="stat-label">Proyectos</div></div>
+    <div class="stat-item"><div class="stat-icon">⚙️</div><div class="stat-value" id="statApis">30</div><div class="stat-label">APIs NestJS</div></div>
+    <div class="stat-item"><div class="stat-icon">🚀</div><div class="stat-value" id="statApps">5</div><div class="stat-label">Apps Core</div></div>
     <div class="stat-item"><div class="stat-icon">🔒</div><div class="stat-value" style="font-size:clamp(14px,2vw,18px)">SSL</div><div class="stat-label">Natino</div></div>
   </div>
 
@@ -318,6 +318,12 @@ const CATEGORIES = [
       {name:'social', url:'https://social.proyectos.cristiancode.dev'},
       {name:'tech-radar', url:'https://tech-radar.proyectos.cristiancode.dev'},
       {name:'entornos', url:'https://entornos.proyectos.cristiancode.dev'},
+    ]},
+  { id:'cpp', label:'C++ / Sistemas', icon:'⚙️',
+    projects:[
+      {name:'api-server', url:'https://api-server.proyectos.cristiancode.dev'},
+      {name:'drone-telemetry', url:'https://github.com/cristiancode-hermes/hermes-2026-07-10-drone-telemetry-hub'},
+      {name:'cpp-utils', url:'https://github.com/cristiancode-hermes/hermes-2026-07-11-cpp-utils-hdr-only'},
     ]},
 ];
 
@@ -436,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('searchInput').addEventListener('input', doSearch);
   // Animate stat values
   setTimeout(() => {
-    [33,29,4].forEach((val, i) => {
+    [36,30,5].forEach((val, i) => {
       const el = document.querySelectorAll('.stat-value')[i];
       if(!el) return;
       let cur = 0;
