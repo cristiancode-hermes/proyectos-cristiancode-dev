@@ -218,12 +218,12 @@ body{
   <!-- Header -->
   <header class="header">
     <div class="logo">⚡ proyectos</div>
-    <p class="subtitle">Portfolio de Cristian — <span>37+</span> proyectos full‑stack</p>
+    <p class="subtitle">Portfolio de Cristian — <span>38+</span> proyectos full‑stack</p>
   </header>
 
   <!-- Stats -->
   <div class="stats-bar">
-    <div class="stat-item"><div class="stat-icon">📦</div><div class="stat-value" id="statProjects">37</div><div class="stat-label">Proyectos</div></div>
+    <div class="stat-item"><div class="stat-icon">📦</div><div class="stat-value" id="statProjects">38</div><div class="stat-label">Proyectos</div></div>
     <div class="stat-item"><div class="stat-icon">⚙️</div><div class="stat-value" id="statApis">30</div><div class="stat-label">APIs NestJS</div></div>
     <div class="stat-item"><div class="stat-icon">🚀</div><div class="stat-value" id="statApps">5</div><div class="stat-label">Apps Core</div></div>
     <div class="stat-item"><div class="stat-icon">🔒</div><div class="stat-value" style="font-size:clamp(14px,2vw,18px)">SSL</div><div class="stat-label">Natino</div></div>
@@ -330,6 +330,7 @@ const CATEGORIES = [
       {name:'proc-explorer', url:'https://github.com/cristiancode-hermes/hermes-2026-07-14-cpp-proc-explorer'},
       {name:'net-analyzer', url:'https://github.com/cristiancode-hermes/hermes-2026-07-15-cpp-net-analyzer'},
       {name:'disk-analyzer', url:'https://github.com/cristiancode-hermes/hermes-2026-07-16-cpp-disk-analyzer'},
+      {name:'mem-analyzer', url:'https://github.com/cristiancode-hermes/hermes-2026-07-17-cpp-mem-analyzer'},
     ]},
 ];
 
@@ -448,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('searchInput').addEventListener('input', doSearch);
   // Animate stat values
   setTimeout(() => {
-    [37,30,5].forEach((val, i) => {
+    [38,30,5].forEach((val, i) => {
       const el = document.querySelectorAll('.stat-value')[i];
       if(!el) return;
       let cur = 0;
