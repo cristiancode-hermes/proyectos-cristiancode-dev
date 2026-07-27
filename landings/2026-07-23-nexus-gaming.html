@@ -30,6 +30,11 @@
   <style>
     /* ============================================================
        DESIGN TOKENS — Nexus Gaming
+       Surface: Decide/Learn (landing page — competitive gaming showcase)
+       Derived from: Original gaming neon theme
+       Family: Gaming / Competitive Esports
+       Style: Dark Futuristic — purple/cyan neon on deep indigo
+       Strategy: Committed (purple ~30%, cyan accent ~8%)
        ============================================================ */
     :root {
       /* Colors */
@@ -610,11 +615,11 @@
     }
 
     .hero-content h1 .highlight {
-      background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      /* This is a special case — hero heading accent only, not gradient text on cards/buttons per ban #2 */
+      color: var(--color-accent);
+    }
+
+    .hero-content h1 .highlight-alt {
+      color: var(--color-accent-secondary);
     }
 
     .hero-content .hero-sub {

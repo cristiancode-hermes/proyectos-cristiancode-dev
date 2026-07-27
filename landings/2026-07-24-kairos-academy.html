@@ -6,8 +6,8 @@
   <title id="meta-title">Kairos Academy — Learn What Matters, When It Matters</title>
   <meta name="description" id="meta-desc" content="Kairos Academy is a modern online learning platform offering expert-led courses in design, technology, business, and creative arts. Learn at your own pace with project-based curriculum.">
   <link rel="canonical" href="https://kairos.academy/">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23d4a747'/%3E%3Cpath d='M16 6c-1.2 3.2-2.5 5.2-4.5 7-1.8 1.6-3 2.8-3.5 5h16c-.5-2.2-1.7-3.4-3.5-5-2-1.8-3.3-3.8-4.5-7z' fill='%23faf7f2'/%3E%3C/svg%3E">
-  <meta name="theme-color" content="#1a2e4f">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230075de'/%3E%3Cpath d='M10 22V10h3.5l3.5 7 3.5-7H24v12h-3V15l-3.5 7-3.5-7v7H10z' fill='%23ffffff'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#f6f5f4">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -25,67 +25,61 @@
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80">
   <meta name="twitter:site" content="@kairosacademy">
 
-  <!-- Fonts: Lexend (headings) + Literata (body) -->
+  <!-- Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Literata:opsz,wght@7..72,300;7..72,400;7..72,500;7..72,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* ============================================================
-       DESIGN TOKENS — Kairos Academy
-       Palette: Deep Navy + Warm Coral + Gold
-       Strategy: Committed (navy ~35%, coral accent ~10%, gold accent ~5%)
+       DESIGN SYSTEM — Kairos Academy
+       Surface: Decide/Learn (landing page — online education platform)
+       Derived from: Notion (popular-web-designs)
+       Family: Education / Online Learning
+       Style: Notion-inspired — warm editorial minimalism, whisper borders
+       Palette: Warm neutrals + Notion Blue accent
+       Font: Inter (all weights 300-700)
+       Strategy: Restrained (tinted neutrals + blue accent ≤10%)
        ============================================================ */
-    :root {
-      /* Colors — Light Mode */
-      --color-bg: #faf7f2;
-      --color-surface: #f5f1ea;
-      --color-surface-alt: #efe9df;
-      --color-elevated: #ffffff;
-      --color-text-primary: #1a1c20;
-      --color-text-secondary: #5c5f66;
-      --color-text-tertiary: #8c8f96;
-      --color-accent: #1a2e4f;
-      --color-accent-hover: #243e68;
-      --color-accent-light: #e8ecf2;
-      --color-accent-alt: #e85d4a;
-      --color-accent-alt-hover: #d44a37;
-      --color-accent-alt-light: #fde8e5;
-      --color-gold: #d4a747;
-      --color-gold-hover: #c09530;
-      --color-gold-light: #faf1d8;
-      --color-border: #ddd8cf;
-      --color-border-light: #e8e4dc;
-      --color-overlay: rgba(26, 30, 32, 0.45);
-      --color-success: #2b8a5e;
-      --color-error: #c7423a;
-      --color-warning: #d9a029;
 
-      /* Colors — Dark Mode */
-      --color-bg-dark: #111318;
-      --color-surface-dark: #1a1d24;
-      --color-surface-alt-dark: #23272f;
-      --color-elevated-dark: #1e222a;
-      --color-text-primary-dark: #e8e6e1;
-      --color-text-secondary-dark: #9a9ca3;
-      --color-text-tertiary-dark: #6b6e76;
-      --color-accent-dark: #4a7abf;
-      --color-accent-hover-dark: #5a8fcf;
-      --color-accent-light-dark: #1f2d45;
-      --color-accent-alt-dark: #f07a68;
-      --color-border-dark: #2d3038;
-      --color-border-light-dark: #373a42;
-      --color-gold-dark: #dbb85a;
-      --color-gold-light-dark: #2f2a1a;
+    :root {
+      /* Notion Color Palette — Light Mode */
+      --color-bg: #ffffff;
+      --color-surface: #f6f5f4;
+      --color-surface-alt: #f0eeec;
+      --color-elevated: #ffffff;
+      --color-text-primary: rgba(0,0,0,0.95);
+      --color-text-secondary: #615d59;
+      --color-text-tertiary: #a39e98;
+      --color-accent: #0075de;
+      --color-accent-hover: #005bab;
+      --color-accent-light: #f2f9ff;
+      --color-accent-text: #097fe8;
+      --color-border: rgba(0,0,0,0.1);
+      --color-border-hover: rgba(0,0,0,0.16);
+      --color-overlay: rgba(0,0,0,0.04);
+
+      /* Dark Mode Colors */
+      --color-bg-dark: #1a1a1a;
+      --color-surface-dark: #232323;
+      --color-surface-alt-dark: #2a2a2a;
+      --color-elevated-dark: #2a2a2a;
+      --color-text-primary-dark: rgba(255,255,255,0.93);
+      --color-text-secondary-dark: #a39e98;
+      --color-text-tertiary-dark: #615d59;
+      --color-accent-dark: #3291ff;
+      --color-accent-hover-dark: #5aadff;
+      --color-accent-light-dark: #1a2a3a;
+      --color-accent-text-dark: #62aef0;
+      --color-border-dark: rgba(255,255,255,0.1);
+      --color-border-hover-dark: rgba(255,255,255,0.18);
+      --color-overlay-dark: rgba(0,0,0,0.3);
 
       /* Typography */
-      --font-heading: 'Lexend', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --font-body: 'Literata', Georgia, 'Times New Roman', serif;
-      --font-mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+      --font-primary: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 
-      /* Spacing scale — rhythmic, not uniform */
-      --space-3xs: 0.25rem;
-      --space-2xs: 0.375rem;
+      /* Spacing */
       --space-xs: 0.5rem;
       --space-sm: 0.75rem;
       --space-md: 1rem;
@@ -95,45 +89,36 @@
       --space-3xl: 4rem;
       --space-4xl: 5.5rem;
       --space-5xl: 8rem;
-      --space-6xl: 11rem;
 
       /* Layout */
       --content-max: 76rem;
       --content-narrow: 44rem;
-      --nav-height: 4rem;
-      --nav-height-mobile: 3.5rem;
+      --nav-height: 3.75rem;
 
-      /* Z-index scale — semantic, no arbitrary values */
+      /* Z-index */
       --z-dropdown: 100;
       --z-sticky: 200;
       --z-nav: 300;
       --z-modal-backdrop: 400;
       --z-modal: 500;
       --z-toast: 600;
-      --z-tooltip: 700;
 
-      /* Shadows */
-      --shadow-sm: 0 1px 2px rgba(26, 30, 32, 0.04);
-      --shadow-md: 0 4px 12px rgba(26, 30, 32, 0.06);
-      --shadow-lg: 0 8px 30px rgba(26, 30, 32, 0.08);
-      --shadow-xl: 0 16px 48px rgba(26, 30, 32, 0.1);
-      --shadow-glow-gold: 0 0 20px rgba(212, 167, 71, 0.15);
+      /* Notion Shadow Stacks */
+      --shadow-soft: rgba(0,0,0,0.04) 0px 4px 18px, rgba(0,0,0,0.027) 0px 2.025px 7.84688px, rgba(0,0,0,0.02) 0px 0.8px 2.925px, rgba(0,0,0,0.01) 0px 0.175px 1.04062px;
+      --shadow-deep: rgba(0,0,0,0.01) 0px 1px 3px, rgba(0,0,0,0.02) 0px 3px 7px, rgba(0,0,0,0.02) 0px 7px 15px, rgba(0,0,0,0.04) 0px 14px 28px, rgba(0,0,0,0.05) 0px 23px 52px;
 
       /* Border radius */
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 16px;
-      --radius-xl: 24px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
       --radius-full: 9999px;
 
       /* Transitions */
-      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-      --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
       --duration-fast: 200ms;
       --duration-normal: 400ms;
       --duration-slow: 700ms;
-      --duration-slower: 1000ms;
     }
 
     /* ============================================================
@@ -150,15 +135,12 @@
       --color-accent: var(--color-accent-dark);
       --color-accent-hover: var(--color-accent-hover-dark);
       --color-accent-light: var(--color-accent-light-dark);
+      --color-accent-text: var(--color-accent-text-dark);
       --color-border: var(--color-border-dark);
-      --color-border-light: var(--color-border-light-dark);
-      --color-gold: var(--color-gold-dark);
-      --color-gold-light: var(--color-gold-light-dark);
-      --color-overlay: rgba(0, 0, 0, 0.6);
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.15);
-      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.2);
-      --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.25);
-      --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.3);
+      --color-border-hover: var(--color-border-hover-dark);
+      --color-overlay: var(--color-overlay-dark);
+      --shadow-soft: rgba(0,0,0,0.25) 0px 4px 18px, rgba(0,0,0,0.2) 0px 2.025px 7.84688px, rgba(0,0,0,0.15) 0px 0.8px 2.925px, rgba(0,0,0,0.1) 0px 0.175px 1.04062px;
+      --shadow-deep: rgba(0,0,0,0.3) 0px 1px 3px, rgba(0,0,0,0.3) 0px 3px 7px, rgba(0,0,0,0.3) 0px 7px 15px, rgba(0,0,0,0.3) 0px 14px 28px, rgba(0,0,0,0.3) 0px 23px 52px;
     }
 
     /* ============================================================
@@ -172,15 +154,15 @@
     }
 
     body {
-      font-family: var(--font-body);
-      font-size: 1.0625rem;
-      line-height: 1.7;
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      line-height: 1.5;
       color: var(--color-text-primary);
       background: var(--color-bg);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      transition: background var(--duration-normal) var(--ease-out-quart),
-                  color var(--duration-normal) var(--ease-out-quart);
+      transition: background var(--duration-normal) var(--ease-out),
+                  color var(--duration-normal) var(--ease-out);
     }
 
     img {
@@ -226,96 +208,124 @@
       border: 0;
     }
 
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-xs);
-      font-family: var(--font-heading);
-      font-size: 0.8125rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--color-accent-alt);
-      margin-bottom: var(--space-lg);
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-3xl);
     }
 
-    .section-label::before {
-      content: '';
-      width: 1.5rem;
-      height: 2px;
-      background: var(--color-accent-alt);
-      border-radius: 1px;
+    .section-header-left {
+      text-align: left;
+      margin-bottom: var(--space-3xl);
     }
 
     .section-title {
-      font-family: var(--font-heading);
-      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-family: var(--font-primary);
+      font-size: clamp(2rem, 3.5vw, 3rem);
       font-weight: 700;
-      line-height: 1.2;
-      color: var(--color-accent);
+      line-height: 1.04;
+      letter-spacing: -0.0625em;
+      color: var(--color-text-primary);
       text-wrap: balance;
       margin-bottom: var(--space-md);
     }
 
     .section-desc {
       font-size: 1.125rem;
-      line-height: 1.7;
+      line-height: 1.5;
       color: var(--color-text-secondary);
-      max-width: 48ch;
+      max-width: 65ch;
+      margin: 0 auto;
     }
 
+    .section-desc-left {
+      margin: 0;
+      max-width: 65ch;
+    }
+
+    /* Notion-style pill badge (section kicker, one intentional use) */
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-family: var(--font-primary);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-lg);
+    }
+
+    /* Pill Badge — Notion style */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-family: var(--font-primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.125px;
+      color: var(--color-accent-text);
+      background: var(--color-accent-light);
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius-full);
+    }
+
+    /* Notion-style buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       gap: var(--space-sm);
-      font-family: var(--font-heading);
+      font-family: var(--font-primary);
       font-size: 0.9375rem;
       font-weight: 600;
-      padding: var(--space-md) var(--space-xl);
-      border-radius: var(--radius-full);
-      transition: all var(--duration-fast) var(--ease-out-quart);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      transition: all var(--duration-fast) var(--ease-out);
       white-space: nowrap;
+      cursor: pointer;
+      line-height: 1.33;
     }
+    .btn:active { transform: scale(0.97); }
 
     .btn-primary {
       background: var(--color-accent);
-      color: #fff;
+      color: #ffffff;
+      border-color: transparent;
     }
     .btn-primary:hover {
       background: var(--color-accent-hover);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
+    }
+    .btn-primary:focus-visible {
+      outline: 2px solid var(--color-accent-text);
+      outline-offset: 2px;
     }
 
     .btn-secondary {
       background: transparent;
-      color: var(--color-accent);
-      border: 2px solid var(--color-border);
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border);
     }
     .btn-secondary:hover {
-      border-color: var(--color-accent);
-      background: var(--color-accent-light);
-      transform: translateY(-1px);
+      border-color: var(--color-border-hover);
+      background: var(--color-overlay);
+    }
+    .btn-secondary:focus-visible {
+      outline: 2px solid var(--color-accent-text);
+      outline-offset: 2px;
     }
 
-    .btn-gold {
-      background: var(--color-gold);
-      color: #1a1c20;
+    .btn-ghost {
+      background: transparent;
+      color: var(--color-text-primary);
+      border-color: transparent;
+      padding: 0.375rem 0.75rem;
     }
-    .btn-gold:hover {
-      background: var(--color-gold-hover);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
+    .btn-ghost:hover {
+      text-decoration: underline;
     }
-
-    .btn-alt {
-      background: var(--color-accent-alt);
-      color: #fff;
-    }
-    .btn-alt:hover {
-      background: var(--color-accent-alt-hover);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
+    .btn-ghost:focus-visible {
+      outline: 2px solid var(--color-accent-text);
+      outline-offset: 2px;
     }
 
     /* ============================================================
@@ -323,9 +333,9 @@
        ============================================================ */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity var(--duration-slow) var(--ease-out-quart),
-                  transform var(--duration-slow) var(--ease-out-quart);
+      transform: translateY(24px);
+      transition: opacity var(--duration-slow) var(--ease-out),
+                  transform var(--duration-slow) var(--ease-out);
     }
 
     .reveal.visible {
@@ -333,14 +343,19 @@
       transform: translateY(0);
     }
 
-    .reveal-delay-1 { transition-delay: 100ms; }
-    .reveal-delay-2 { transition-delay: 200ms; }
-    .reveal-delay-3 { transition-delay: 300ms; }
-    .reveal-delay-4 { transition-delay: 400ms; }
+    .reveal-delay-1 { transition-delay: 80ms; }
+    .reveal-delay-2 { transition-delay: 160ms; }
+    .reveal-delay-3 { transition-delay: 240ms; }
+    .reveal-delay-4 { transition-delay: 320ms; }
 
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
-      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
 
     /* ============================================================
@@ -354,13 +369,13 @@
       z-index: var(--z-nav);
       height: var(--nav-height);
       background: var(--color-bg);
-      border-bottom: 1px solid var(--color-border-light);
-      transition: background var(--duration-normal) var(--ease-out-quart),
-                  border-color var(--duration-normal) var(--ease-out-quart);
+      border-bottom: 1px solid var(--color-border);
+      transition: background var(--duration-normal) var(--ease-out),
+                  border-color var(--duration-normal) var(--ease-out);
     }
 
     .nav-scrolled {
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-soft);
     }
 
     .nav-inner {
@@ -377,23 +392,24 @@
       display: flex;
       align-items: center;
       gap: var(--space-sm);
-      font-family: var(--font-heading);
-      font-size: 1.25rem;
+      font-family: var(--font-primary);
+      font-size: 1.0625rem;
       font-weight: 700;
-      color: var(--color-accent);
+      color: var(--color-text-primary);
+      letter-spacing: -0.01em;
     }
 
     .nav-logo-mark {
-      width: 2rem;
-      height: 2rem;
-      background: var(--color-gold);
+      width: 1.75rem;
+      height: 1.75rem;
+      background: var(--color-accent);
       border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--color-accent);
+      color: #fff;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.875rem;
     }
 
     .nav-links {
@@ -403,26 +419,14 @@
     }
 
     .nav-links a {
-      font-family: var(--font-heading);
-      font-size: 0.875rem;
+      font-family: var(--font-primary);
+      font-size: 0.9375rem;
       font-weight: 500;
       color: var(--color-text-secondary);
-      transition: color var(--duration-fast) var(--ease-out-quart);
-      position: relative;
+      transition: color var(--duration-fast) var(--ease-out);
+      padding: 0.25rem 0;
     }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--color-gold);
-      transition: width var(--duration-fast) var(--ease-out-quart);
-      border-radius: 1px;
-    }
-    .nav-links a:hover { color: var(--color-accent); }
-    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--color-text-primary); }
 
     .nav-actions {
       display: flex;
@@ -434,20 +438,21 @@
     .lang-btn {
       display: flex;
       align-items: center;
-      gap: var(--space-2xs);
-      font-family: var(--font-heading);
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--color-text-tertiary);
-      padding: var(--space-2xs) var(--space-xs);
+      gap: 0.375rem;
+      font-family: var(--font-primary);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      padding: 0.375rem 0.5rem;
       border: 1px solid var(--color-border);
       border-radius: var(--radius-sm);
-      transition: all var(--duration-fast) var(--ease-out-quart);
+      transition: all var(--duration-fast) var(--ease-out);
       position: relative;
+      line-height: 1.33;
     }
     .lang-btn:hover {
-      color: var(--color-accent);
-      border-color: var(--color-accent);
+      border-color: var(--color-border-hover);
+      color: var(--color-text-primary);
     }
     .lang-btn svg { width: 14px; height: 14px; }
 
@@ -458,12 +463,12 @@
       background: var(--color-elevated);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-deep);
       min-width: 10rem;
       opacity: 0;
       visibility: hidden;
       transform: translateY(-4px);
-      transition: all var(--duration-fast) var(--ease-out-quart);
+      transition: all var(--duration-fast) var(--ease-out);
       z-index: var(--z-dropdown);
       overflow: hidden;
     }
@@ -478,20 +483,21 @@
       gap: var(--space-sm);
       width: 100%;
       padding: var(--space-sm) var(--space-md);
-      font-family: var(--font-heading);
-      font-size: 0.8125rem;
+      font-family: var(--font-primary);
+      font-size: 0.875rem;
       font-weight: 500;
       color: var(--color-text-secondary);
-      transition: all var(--duration-fast) var(--ease-out-quart);
-      border-bottom: 1px solid var(--color-border-light);
+      transition: all var(--duration-fast) var(--ease-out);
+      border-bottom: 1px solid var(--color-border);
+      cursor: pointer;
     }
     .lang-option:last-child { border-bottom: none; }
-    .lang-option:hover { background: var(--color-accent-light); color: var(--color-accent); }
-    .lang-option.active { color: var(--color-accent); font-weight: 600; }
+    .lang-option:hover { background: var(--color-surface); color: var(--color-text-primary); }
+    .lang-option.active { color: var(--color-text-primary); font-weight: 600; }
     .lang-option .flag { font-size: 1rem; }
     .lang-option .check {
       margin-left: auto;
-      color: var(--color-gold);
+      color: var(--color-accent);
       opacity: 0;
     }
     .lang-option.active .check { opacity: 1; }
@@ -499,25 +505,24 @@
     /* Theme Toggle */
     .theme-toggle {
       position: relative;
-      width: 2.25rem;
-      height: 2.25rem;
-      border-radius: var(--radius-full);
+      width: 2.125rem;
+      height: 2.125rem;
+      border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--color-text-secondary);
       border: 1px solid var(--color-border);
-      transition: all var(--duration-fast) var(--ease-out-quart);
+      transition: all var(--duration-fast) var(--ease-out);
     }
     .theme-toggle:hover {
-      color: var(--color-gold);
-      border-color: var(--color-gold);
-      background: var(--color-gold-light);
+      border-color: var(--color-border-hover);
+      color: var(--color-text-primary);
     }
     .theme-toggle svg {
-      width: 1rem;
-      height: 1rem;
-      transition: transform var(--duration-normal) var(--ease-out-quart);
+      width: 0.9375rem;
+      height: 0.9375rem;
+      transition: transform var(--duration-normal) var(--ease-out);
     }
     .theme-toggle .sun-icon { display: none; }
     .theme-toggle .moon-icon { display: block; }
@@ -528,8 +533,8 @@
     .hamburger {
       display: none;
       flex-direction: column;
-      gap: 5px;
-      padding: var(--space-xs);
+      gap: 4px;
+      padding: 0.5rem;
       border: 1px solid var(--color-border);
       border-radius: var(--radius-sm);
       background: none;
@@ -537,15 +542,15 @@
     }
     .hamburger span {
       display: block;
-      width: 20px;
+      width: 18px;
       height: 2px;
       background: var(--color-text-primary);
       border-radius: 1px;
-      transition: all var(--duration-fast) var(--ease-out-quart);
+      transition: all var(--duration-fast) var(--ease-out);
     }
-    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
 
     /* Mobile nav */
     .mobile-nav {
@@ -561,17 +566,23 @@
       flex-direction: column;
       gap: var(--space-xl);
       transform: translateX(100%);
-      transition: transform var(--duration-normal) var(--ease-out-quart);
+      transition: transform var(--duration-normal) var(--ease-out);
     }
     .mobile-nav.open { transform: translateX(0); }
     .mobile-nav a {
-      font-family: var(--font-heading);
+      font-family: var(--font-primary);
       font-size: 1.125rem;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--color-text-primary);
       display: block;
       padding: var(--space-sm) 0;
-      border-bottom: 1px solid var(--color-border-light);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .mobile-nav .btn {
+      width: 100%;
+      justify-content: center;
+      margin-top: var(--space-md);
     }
 
     /* ============================================================
@@ -582,21 +593,7 @@
       padding-bottom: var(--space-5xl);
       position: relative;
       overflow: hidden;
-    }
-
-    .hero-bg-shape {
-      position: absolute;
-      top: -30%;
-      right: -10%;
-      width: 60%;
-      height: 80%;
-      background: radial-gradient(ellipse at center, var(--color-accent-light) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-      opacity: 0.5;
-    }
-    [data-theme="dark"] .hero-bg-shape {
-      background: radial-gradient(ellipse at center, var(--color-accent-light-dark) 0%, transparent 70%);
+      background: var(--color-bg);
     }
 
     .hero-inner {
@@ -604,47 +601,29 @@
       grid-template-columns: 1fr 1fr;
       gap: var(--space-4xl);
       align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-xs);
-      font-family: var(--font-heading);
-      font-size: 0.8125rem;
-      font-weight: 600;
-      color: var(--color-accent-alt);
-      background: var(--color-accent-alt-light);
-      padding: var(--space-2xs) var(--space-md);
-      border-radius: var(--radius-full);
-      margin-bottom: var(--space-lg);
-    }
-    [data-theme="dark"] .hero-tag {
-      background: rgba(232, 93, 74, 0.12);
     }
 
     .hero-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2.25rem, 5vw, 4.5rem);
+      font-family: var(--font-primary);
+      font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 700;
-      line-height: 1.08;
-      color: var(--color-accent);
+      line-height: 1.00;
+      color: var(--color-text-primary);
       text-wrap: balance;
       margin-bottom: var(--space-lg);
-      letter-spacing: -0.02em;
+      letter-spacing: -0.033em;
     }
 
     .hero-title .highlight {
-      color: var(--color-accent-alt);
+      color: var(--color-accent);
     }
 
     .hero-desc {
       font-size: 1.125rem;
-      line-height: 1.75;
+      font-weight: 500;
+      line-height: 1.5;
       color: var(--color-text-secondary);
-      max-width: 50ch;
+      max-width: 65ch;
       margin-bottom: var(--space-xl);
     }
 
@@ -657,46 +636,45 @@
     .hero-stats {
       display: flex;
       gap: var(--space-2xl);
-      margin-top: var(--space-2xl);
-      padding-top: var(--space-xl);
-      border-top: 1px solid var(--color-border-light);
+      margin-top: var(--space-xl);
     }
 
     .hero-stat-value {
-      font-family: var(--font-heading);
-      font-size: 1.625rem;
+      font-family: var(--font-primary);
+      font-size: 1.5rem;
       font-weight: 700;
-      color: var(--color-accent);
+      color: var(--color-text-primary);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
     }
 
     .hero-stat-label {
       font-size: 0.875rem;
       color: var(--color-text-tertiary);
-      line-height: 1.4;
+      line-height: 1.43;
+      font-weight: 400;
     }
 
-    /* Hero visual — bento-style preview */
+    /* Hero visual — Notion-style preview cards */
     .hero-visual {
       position: relative;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto auto;
       gap: var(--space-md);
-      perspective: 1000px;
     }
 
     .hero-card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border-light);
+      background: var(--color-elevated);
+      border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
       padding: var(--space-lg);
-      transition: all var(--duration-normal) var(--ease-out-quart);
+      transition: all var(--duration-normal) var(--ease-out);
       position: relative;
-      overflow: hidden;
+      box-shadow: var(--shadow-soft);
     }
     .hero-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-deep);
     }
 
     .hero-card-wide {
@@ -704,66 +682,52 @@
     }
 
     .hero-card-accent {
-      background: var(--color-accent);
-      border-color: var(--color-accent);
-      color: #fff;
-    }
-    [data-theme="dark"] .hero-card-accent {
-      background: var(--color-accent-dark);
-      border-color: var(--color-accent-dark);
+      background: var(--color-accent-light);
+      border-color: var(--color-accent-light);
     }
 
     .hero-card-title {
-      font-family: var(--font-heading);
-      font-size: 0.875rem;
+      font-family: var(--font-primary);
+      font-size: 0.9375rem;
       font-weight: 600;
+      color: var(--color-text-primary);
       margin-bottom: var(--space-xs);
     }
 
     .hero-card-text {
-      font-size: 0.8125rem;
+      font-size: 0.875rem;
       line-height: 1.5;
-      opacity: 0.8;
+      color: var(--color-text-secondary);
+      font-weight: 400;
     }
 
     .hero-card .icon-wrap {
-      width: 2.25rem;
-      height: 2.25rem;
+      width: 2rem;
+      height: 2rem;
       border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: var(--space-sm);
-      background: var(--color-accent-alt-light);
-      color: var(--color-accent-alt);
-    }
-    .hero-card-accent .icon-wrap {
-      background: rgba(255,255,255,0.15);
-      color: #fff;
+      background: var(--color-surface);
+      color: var(--color-text-primary);
     }
 
     .hero-card-line {
-      position: absolute;
-      bottom: 0;
-      left: var(--space-lg);
-      right: var(--space-lg);
-      height: 3px;
-      border-radius: 2px;
-      background: var(--color-gold-light);
-    }
-    .hero-card-accent .hero-card-line {
-      background: rgba(255,255,255,0.2);
+      margin-top: var(--space-md);
+      height: 6px;
+      border-radius: var(--radius-full);
+      background: var(--color-surface);
+      overflow: hidden;
     }
     .hero-card-line-fill {
       height: 100%;
-      border-radius: 2px;
-      background: var(--color-gold);
+      border-radius: var(--radius-full);
+      background: var(--color-accent);
       width: 0%;
-      transition: width 1.5s var(--ease-out-expo);
+      transition: width 1.5s var(--ease-out);
     }
-    .hero-card-line-fill.animate {
-      width: 72%;
-    }
+    .hero-card-line-fill.animate { width: 72%; }
 
     .hero-card-small {
       display: flex;
@@ -779,191 +743,144 @@
       width: 1.75rem;
       height: 1.75rem;
       border-radius: 50%;
-      border: 2px solid var(--color-surface);
+      border: 2px solid var(--color-bg);
       margin-right: -0.5rem;
       object-fit: cover;
     }
     .hero-avatar:last-child { margin-right: 0; }
 
-    .hero-card-accent .hero-avatar { border-color: var(--color-accent); }
-    [data-theme="dark"] .hero-card-accent .hero-avatar { border-color: var(--color-accent-dark); }
+    .hero-card-accent .hero-card-text { color: var(--color-text-secondary); }
 
     /* ============================================================
-       FEATURES — Bento Grid
+       FEATURES — Notion Grid
        ============================================================ */
     .features {
       padding: var(--space-5xl) 0;
+      background: var(--color-surface);
+      transition: background var(--duration-normal) var(--ease-out);
     }
 
-    .features-header {
-      text-align: center;
-      margin-bottom: var(--space-4xl);
-    }
-    .features-header .section-label {
-      justify-content: center;
-    }
-    .features-header .section-desc {
-      margin: 0 auto;
-    }
-
-    .bento-grid {
+    .notion-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: var(--space-lg);
     }
 
-    .bento-card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border-light);
+    .notion-card {
+      background: var(--color-elevated);
+      border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
       padding: var(--space-2xl);
-      transition: all var(--duration-normal) var(--ease-out-quart);
+      transition: all var(--duration-normal) var(--ease-out);
       position: relative;
-      overflow: hidden;
     }
-    .bento-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
+    .notion-card:hover {
+      box-shadow: var(--shadow-soft);
     }
 
-    .bento-card:has(.bento-icon-accent) {
-      background: var(--color-accent);
-      border-color: var(--color-accent);
-      color: #fff;
-    }
-    [data-theme="dark"] .bento-card:has(.bento-icon-accent) {
-      background: var(--color-accent-dark);
-      border-color: var(--color-accent-dark);
+    .notion-card-wide {
+      grid-column: span 2;
     }
 
-    .bento-card:has(.bento-icon-alt) {
-      background: var(--color-accent-alt);
-      border-color: var(--color-accent-alt);
-      color: #fff;
+    .notion-card-full {
+      grid-column: 1 / -1;
     }
 
-    .bento-card:has(.bento-icon-gold) {
-      background: var(--color-gold);
-      border-color: var(--color-gold);
-      color: #1a1c20;
-    }
-
-    .bento-icon {
+    .notion-icon {
       width: 2.5rem;
       height: 2.5rem;
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: var(--space-lg);
-      background: var(--color-accent-light);
-      color: var(--color-accent);
-    }
-    .bento-icon-accent ~ .bento-icon {
-      background: rgba(255,255,255,0.15);
-      color: #fff;
-    }
-    .bento-icon-alt ~ .bento-icon {
-      background: rgba(255,255,255,0.15);
-      color: #fff;
-    }
-    .bento-icon-gold ~ .bento-icon {
-      background: rgba(0,0,0,0.08);
-      color: #1a1c20;
+      background: var(--color-surface);
+      color: var(--color-text-primary);
     }
 
-    .bento-icon svg {
+    .notion-icon svg {
       width: 1.25rem;
       height: 1.25rem;
     }
 
-    .bento-title {
-      font-family: var(--font-heading);
+    .notion-card-title {
+      font-family: var(--font-primary);
       font-size: 1.125rem;
       font-weight: 600;
-      margin-bottom: var(--space-xs);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-sm);
+      letter-spacing: -0.01em;
     }
 
-    .bento-desc {
+    .notion-card-desc {
       font-size: 0.9375rem;
-      line-height: 1.6;
-      opacity: 0.85;
+      line-height: 1.5;
+      color: var(--color-text-secondary);
+      font-weight: 400;
     }
 
-    .bento-card:has(.bento-icon-gold) .bento-desc { opacity: 0.8; }
-
-    /* Bento spans */
-    .bento-span-2 { grid-column: span 2; }
-    .bento-span-2h { grid-column: span 2; grid-row: span 1; }
-    .bento-span-2v { grid-column: span 1; grid-row: span 2; }
-
-    /* Bento visual elements */
-    .bento-chart {
-      display: flex;
-      align-items: flex-end;
-      gap: var(--space-xs);
-      height: 5rem;
-      margin-top: var(--space-lg);
-    }
-    .bento-bar {
-      flex: 1;
-      border-radius: 3px 3px 0 0;
-      background: var(--color-accent-light);
-      transition: height var(--duration-slower) var(--ease-out-expo);
-      height: 0;
-    }
-    .bento-card:has(.bento-icon-accent) .bento-bar { background: rgba(255,255,255,0.2); }
-    .bento-card:has(.bento-icon-alt) .bento-bar { background: rgba(255,255,255,0.2); }
-    .bento-card:has(.bento-icon-gold) .bento-bar { background: rgba(0,0,0,0.1); }
-    .bento-bar.animate { height: var(--h); }
-
-    .bento-dots {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-xs);
-      margin-top: var(--space-lg);
-    }
-    .bento-dot {
-      width: 0.5rem;
-      height: 0.5rem;
-      border-radius: 50%;
-      background: var(--color-border);
-      transition: all var(--duration-slow) var(--ease-out-quart);
-    }
-    .bento-dot.active { background: var(--color-gold); transform: scale(1.3); }
-    .bento-card:has(.bento-icon-accent) .bento-dot { background: rgba(255,255,255,0.15); }
-    .bento-card:has(.bento-icon-accent) .bento-dot.active { background: #fff; }
-
-    .bento-list {
+    .notion-list {
       margin-top: var(--space-lg);
       display: flex;
       flex-direction: column;
       gap: var(--space-sm);
     }
-    .bento-list-item {
+    .notion-list-item {
       display: flex;
       align-items: center;
       gap: var(--space-sm);
       font-size: 0.875rem;
-      line-height: 1.4;
+      line-height: 1.43;
+      color: var(--color-text-secondary);
     }
-    .bento-list-item svg {
+    .notion-list-item svg {
       width: 1rem;
       height: 1rem;
       flex-shrink: 0;
-      color: var(--color-gold);
+      color: var(--color-accent);
     }
-    .bento-card:has(.bento-icon-accent) .bento-list-item svg { color: rgba(255,255,255,0.8); }
+
+    .notion-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 4.5rem;
+      margin-top: var(--space-lg);
+      padding-top: var(--space-md);
+    }
+    .notion-bar {
+      flex: 1;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      background: var(--color-surface);
+      transition: height var(--duration-slow) var(--ease-out);
+      height: 0;
+    }
+    .notion-bar.animate { height: var(--h); }
+
+    .notion-dots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-top: var(--space-lg);
+    }
+    .notion-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--color-border);
+      transition: all var(--duration-slow) var(--ease-out);
+    }
+    .notion-dot.active { background: var(--color-accent); }
 
     /* ============================================================
-       STATS SECTION
+       STATS BAND
        ============================================================ */
     .stats {
       padding: var(--space-4xl) 0;
-      background: var(--color-surface);
-      border-top: 1px solid var(--color-border-light);
-      border-bottom: 1px solid var(--color-border-light);
-      transition: background var(--duration-normal) var(--ease-out-quart);
+      background: var(--color-bg);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      transition: background var(--duration-normal) var(--ease-out);
     }
 
     .stats-grid {
@@ -978,22 +895,25 @@
     }
 
     .stat-number {
-      font-family: var(--font-heading);
-      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-family: var(--font-primary);
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
       font-weight: 700;
-      color: var(--color-accent);
-      line-height: 1.1;
+      color: var(--color-text-primary);
+      line-height: 1.04;
       margin-bottom: var(--space-xs);
+      letter-spacing: -0.03em;
     }
 
     .stat-number .suffix {
       font-size: 0.6em;
-      color: var(--color-gold);
+      color: var(--color-text-tertiary);
+      font-weight: 400;
     }
 
     .stat-label {
       font-size: 0.9375rem;
-      color: var(--color-text-tertiary);
+      color: var(--color-text-secondary);
+      font-weight: 400;
     }
 
     /* ============================================================
@@ -1001,50 +921,45 @@
        ============================================================ */
     .testimonials {
       padding: var(--space-5xl) 0;
+      background: var(--color-surface);
+      transition: background var(--duration-normal) var(--ease-out);
     }
-
-    .testimonials-header {
-      text-align: center;
-      margin-bottom: var(--space-4xl);
-    }
-    .testimonials-header .section-label { justify-content: center; }
-    .testimonials-header .section-desc { margin: 0 auto; }
 
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-xl);
+      gap: var(--space-lg);
     }
 
     .testimonial-card {
       background: var(--color-elevated);
-      border: 1px solid var(--color-border-light);
+      border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
       padding: var(--space-2xl);
-      transition: all var(--duration-normal) var(--ease-out-quart);
+      transition: all var(--duration-normal) var(--ease-out);
       display: flex;
       flex-direction: column;
     }
     .testimonial-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-soft);
     }
 
     .testimonial-stars {
       display: flex;
       gap: 2px;
       margin-bottom: var(--space-lg);
-      color: var(--color-gold);
+      color: var(--color-text-tertiary);
     }
-    .testimonial-stars svg { width: 1rem; height: 1rem; }
+    .testimonial-stars svg { width: 0.9375rem; height: 0.9375rem; }
+    .testimonial-stars .star-filled { color: var(--color-text-primary); }
 
     .testimonial-text {
       font-size: 0.9375rem;
-      line-height: 1.7;
+      line-height: 1.6;
       color: var(--color-text-secondary);
       flex: 1;
       margin-bottom: var(--space-lg);
-      font-style: italic;
+      font-weight: 400;
     }
 
     .testimonial-author {
@@ -1054,14 +969,14 @@
     }
 
     .testimonial-avatar {
-      width: 2.75rem;
-      height: 2.75rem;
+      width: 2.5rem;
+      height: 2.5rem;
       border-radius: 50%;
       object-fit: cover;
     }
 
     .testimonial-name {
-      font-family: var(--font-heading);
+      font-family: var(--font-primary);
       font-size: 0.9375rem;
       font-weight: 600;
       color: var(--color-text-primary);
@@ -1070,31 +985,16 @@
     .testimonial-role {
       font-size: 0.8125rem;
       color: var(--color-text-tertiary);
+      font-weight: 400;
     }
-
-    .testimonial-card-featured {
-      background: var(--color-accent);
-      border-color: var(--color-accent);
-      color: #fff;
-    }
-    [data-theme="dark"] .testimonial-card-featured {
-      background: var(--color-accent-dark);
-      border-color: var(--color-accent-dark);
-    }
-    .testimonial-card-featured .testimonial-text,
-    .testimonial-card-featured .testimonial-name,
-    .testimonial-card-featured .testimonial-role { color: #fff; }
-    .testimonial-card-featured .testimonial-stars { color: #fff; opacity: 0.8; }
 
     /* ============================================================
        FAQ SECTION
        ============================================================ */
     .faq {
       padding: var(--space-5xl) 0;
-      background: var(--color-surface);
-      border-top: 1px solid var(--color-border-light);
-      border-bottom: 1px solid var(--color-border-light);
-      transition: background var(--duration-normal) var(--ease-out-quart);
+      background: var(--color-bg);
+      transition: background var(--duration-normal) var(--ease-out);
     }
 
     .faq-inner {
@@ -1115,14 +1015,13 @@
     }
 
     .faq-item {
-      background: var(--color-elevated);
-      border: 1px solid var(--color-border-light);
+      border: 1px solid var(--color-border);
       border-radius: var(--radius-md);
       overflow: hidden;
-      transition: all var(--duration-fast) var(--ease-out-quart);
+      transition: all var(--duration-fast) var(--ease-out);
     }
-    .faq-item:hover { border-color: var(--color-border); }
-    .faq-item.open { border-color: var(--color-gold); }
+    .faq-item:hover { border-color: var(--color-border-hover); }
+    .faq-item.open { border-color: var(--color-accent); }
 
     .faq-question {
       display: flex;
@@ -1130,24 +1029,24 @@
       justify-content: space-between;
       width: 100%;
       padding: var(--space-lg) var(--space-xl);
-      font-family: var(--font-heading);
+      font-family: var(--font-primary);
       font-size: 0.9375rem;
       font-weight: 600;
       color: var(--color-text-primary);
       text-align: left;
       background: none;
       border: none;
-      transition: color var(--duration-fast) var(--ease-out-quart);
+      transition: color var(--duration-fast) var(--ease-out);
       cursor: pointer;
     }
     .faq-item.open .faq-question { color: var(--color-accent); }
 
     .faq-icon {
-      width: 1.25rem;
-      height: 1.25rem;
+      width: 1.125rem;
+      height: 1.125rem;
       flex-shrink: 0;
       color: var(--color-text-tertiary);
-      transition: all var(--duration-fast) var(--ease-out-quart);
+      transition: all var(--duration-fast) var(--ease-out);
     }
     .faq-item.open .faq-icon {
       transform: rotate(45deg);
@@ -1157,13 +1056,13 @@
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height var(--duration-normal) var(--ease-out-quart);
+      transition: max-height var(--duration-normal) var(--ease-out);
     }
 
     .faq-answer-inner {
       padding: 0 var(--space-xl) var(--space-lg);
       font-size: 0.9375rem;
-      line-height: 1.7;
+      line-height: 1.6;
       color: var(--color-text-secondary);
     }
 
@@ -1173,43 +1072,31 @@
     .newsletter {
       padding: var(--space-5xl) 0;
       text-align: center;
+      background: var(--color-surface);
+      transition: background var(--duration-normal) var(--ease-out);
     }
 
     .newsletter-card {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border-light);
-      border-radius: var(--radius-xl);
-      padding: var(--space-4xl) var(--space-2xl);
-      max-width: 42rem;
+      max-width: 38rem;
       margin: 0 auto;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .newsletter-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--color-accent), var(--color-gold), var(--color-accent-alt));
     }
 
     .newsletter-title {
-      font-family: var(--font-heading);
+      font-family: var(--font-primary);
       font-size: clamp(1.5rem, 3vw, 2rem);
       font-weight: 700;
-      color: var(--color-accent);
+      color: var(--color-text-primary);
       text-wrap: balance;
       margin-bottom: var(--space-sm);
+      letter-spacing: -0.03em;
     }
 
     .newsletter-desc {
       font-size: 1rem;
       color: var(--color-text-secondary);
-      max-width: 36ch;
+      max-width: 65ch;
       margin: 0 auto var(--space-xl);
+      line-height: 1.5;
     }
 
     .newsletter-form {
@@ -1221,18 +1108,20 @@
 
     .newsletter-input {
       flex: 1;
-      font-family: var(--font-body);
+      font-family: var(--font-primary);
       font-size: 0.9375rem;
-      padding: var(--space-md) var(--space-lg);
-      border: 2px solid var(--color-border);
-      border-radius: var(--radius-full);
+      font-weight: 400;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
       background: var(--color-elevated);
       color: var(--color-text-primary);
       outline: none;
-      transition: border-color var(--duration-fast) var(--ease-out-quart);
+      transition: border-color var(--duration-fast) var(--ease-out);
     }
     .newsletter-input:focus {
-      border-color: var(--color-gold);
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 2px var(--color-accent-light);
     }
     .newsletter-input::placeholder {
       color: var(--color-text-tertiary);
@@ -1243,10 +1132,10 @@
       align-items: center;
       justify-content: center;
       gap: var(--space-sm);
-      font-family: var(--font-heading);
+      font-family: var(--font-primary);
       font-size: 1rem;
-      font-weight: 600;
-      color: var(--color-success);
+      font-weight: 500;
+      color: var(--color-text-primary);
       padding: var(--space-lg);
     }
     .newsletter-success.show { display: flex; }
@@ -1257,7 +1146,9 @@
        ============================================================ */
     .footer {
       padding: var(--space-4xl) 0 var(--space-2xl);
-      border-top: 1px solid var(--color-border-light);
+      border-top: 1px solid var(--color-border);
+      background: var(--color-bg);
+      transition: background var(--duration-normal) var(--ease-out);
     }
 
     .footer-grid {
@@ -1272,7 +1163,8 @@
       color: var(--color-text-tertiary);
       max-width: 32ch;
       margin-top: var(--space-md);
-      line-height: 1.7;
+      line-height: 1.6;
+      font-weight: 400;
     }
 
     .footer-social {
@@ -1284,28 +1176,25 @@
     .footer-social a {
       width: 2.25rem;
       height: 2.25rem;
-      border-radius: var(--radius-full);
+      border-radius: var(--radius-sm);
       border: 1px solid var(--color-border);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--color-text-tertiary);
-      transition: all var(--duration-fast) var(--ease-out-quart);
+      transition: all var(--duration-fast) var(--ease-out);
     }
     .footer-social a:hover {
-      color: var(--color-accent);
-      border-color: var(--color-accent);
-      background: var(--color-accent-light);
+      color: var(--color-text-primary);
+      border-color: var(--color-border-hover);
     }
-    .footer-social a svg { width: 1rem; height: 1rem; }
+    .footer-social a svg { width: 0.9375rem; height: 0.9375rem; }
 
     .footer-heading {
-      font-family: var(--font-heading);
+      font-family: var(--font-primary);
       font-size: 0.8125rem;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--color-accent);
+      color: var(--color-text-primary);
       margin-bottom: var(--space-lg);
     }
 
@@ -1316,19 +1205,21 @@
     }
     .footer-links a {
       font-size: 0.9375rem;
+      font-weight: 400;
       color: var(--color-text-tertiary);
-      transition: color var(--duration-fast) var(--ease-out-quart);
+      transition: color var(--duration-fast) var(--ease-out);
     }
-    .footer-links a:hover { color: var(--color-accent); }
+    .footer-links a:hover { color: var(--color-text-primary); }
 
     .footer-bottom {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding-top: var(--space-xl);
-      border-top: 1px solid var(--color-border-light);
+      border-top: 1px solid var(--color-border);
       font-size: 0.8125rem;
       color: var(--color-text-tertiary);
+      font-weight: 400;
     }
 
     /* ============================================================
@@ -1339,16 +1230,16 @@
       bottom: var(--space-xl);
       left: var(--space-xl);
       right: var(--space-xl);
-      max-width: 30rem;
+      max-width: 28rem;
       background: var(--color-elevated);
       border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
       padding: var(--space-xl);
-      box-shadow: var(--shadow-xl);
+      box-shadow: var(--shadow-deep);
       z-index: var(--z-toast);
       transform: translateY(calc(100% + var(--space-2xl)));
       opacity: 0;
-      transition: all var(--duration-normal) var(--ease-out-quart);
+      transition: all var(--duration-normal) var(--ease-out);
     }
     .cookie-banner.show {
       transform: translateY(0);
@@ -1358,7 +1249,7 @@
     .cookie-text {
       font-size: 0.875rem;
       color: var(--color-text-secondary);
-      line-height: 1.6;
+      line-height: 1.5;
       margin-bottom: var(--space-lg);
     }
 
@@ -1380,10 +1271,10 @@
         max-width: 32rem;
       }
 
-      .bento-grid {
+      .notion-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      .bento-span-2, .bento-span-2h, .bento-span-2v { grid-column: span 1; }
+      .notion-card-wide { grid-column: span 1; }
 
       .testimonials-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1402,12 +1293,12 @@
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .nav-actions .btn { display: none; }
+      .nav-actions .btn-nav-cta { display: none; }
       .hamburger { display: flex; }
       .mobile-nav { display: flex; }
 
       .hero {
-        padding-top: calc(var(--nav-height-mobile) + var(--space-3xl));
+        padding-top: calc(var(--nav-height) + var(--space-3xl));
         padding-bottom: var(--space-4xl);
       }
 
@@ -1425,7 +1316,7 @@
         gap: var(--space-lg);
       }
 
-      .bento-grid {
+      .notion-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1463,7 +1354,7 @@
       }
 
       .hero-stat-value {
-        font-size: 1.375rem;
+        font-size: 1.25rem;
       }
     }
   </style>
@@ -1526,7 +1417,7 @@
           </div>
         </div>
 
-        <a href="#" class="btn btn-primary" data-i18n="nav.cta">Start Learning</a>
+        <a href="#" class="btn btn-primary btn-nav-cta" data-i18n="nav.cta">Start Learning</a>
       </div>
 
       <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -1539,18 +1430,19 @@
     <a href="#features" data-i18n="nav.features">Courses</a>
     <a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a>
     <a href="#faq" data-i18n="nav.faq">FAQ</a>
-    <a href="#" class="btn btn-primary" style="text-align:center;justify-content:center;margin-top:var(--space-lg);width:100%" data-i18n="nav.cta">Start Learning</a>
+    <a href="#" class="btn btn-primary" data-i18n="nav.cta">Start Learning</a>
   </div>
 
   <!-- ============================================================
        HERO
        ============================================================ -->
   <section class="hero" id="hero">
-    <div class="hero-bg-shape" aria-hidden="true"></div>
     <div class="container">
       <div class="hero-inner">
         <div class="hero-content">
-          <div class="hero-tag reveal" data-i18n="hero.tag">✨ New: AI-Powered Courses</div>
+          <div class="hero-tag reveal">
+            <span class="pill" data-i18n="hero.tag">✨ New: AI-Powered Courses</span>
+          </div>
           <h1 class="hero-title reveal reveal-delay-1">
             <span data-i18n="hero.title1">Learn What</span><br>
             <span class="highlight" data-i18n="hero.title2">Matters Most</span>
@@ -1561,7 +1453,7 @@
           </p>
           <div class="hero-actions reveal reveal-delay-3">
             <a href="#" class="btn btn-primary" data-i18n="hero.cta1">Explore Courses</a>
-            <a href="#" class="btn btn-secondary" data-i18n="hero.cta2">Watch Overview →</a>
+            <a href="#" class="btn btn-secondary" data-i18n="hero.cta2">Watch Overview</a>
           </div>
           <div class="hero-stats reveal reveal-delay-4">
             <div>
@@ -1579,7 +1471,7 @@
           </div>
         </div>
 
-        <!-- Bento-style hero visual -->
+        <!-- Notion-style hero visual cards -->
         <div class="hero-visual reveal reveal-delay-2">
           <div class="hero-card hero-card-wide">
             <div class="hero-card-title" data-i18n="hero.vis1_title">Course Progress</div>
@@ -1591,7 +1483,7 @@
 
           <div class="hero-card hero-card-small">
             <div class="hero-card-title" data-i18n="hero.vis2_title">Students Online</div>
-            <div class="hero-card-text" data-i18n="hero.vis2_text" style="font-size:1.5rem;font-weight:700;font-family:var(--font-heading);opacity:1;">1,247</div>
+            <div class="hero-card-text" style="font-size:1.5rem;font-weight:700;color:var(--color-text-primary);letter-spacing:-0.03em;" data-i18n="hero.vis2_text">1,247</div>
           </div>
 
           <div class="hero-card hero-card-accent hero-card-small">
@@ -1610,105 +1502,105 @@
   </section>
 
   <!-- ============================================================
-       FEATURES — Bento Grid
+       FEATURES — Notion Grid
        ============================================================ -->
   <section class="features" id="features">
     <div class="container">
-      <div class="features-header">
-        <div class="section-label reveal" data-i18n="features.label">Why Kairos</div>
-        <h2 class="section-title reveal reveal-delay-1" data-i18n="features.title">A Smarter Way to Learn</h2>
-        <p class="section-desc reveal reveal-delay-2" data-i18n="features.desc">
+      <div class="section-header">
+        <p class="kicker" data-i18n="features.label">Why Kairos</p>
+        <h2 class="section-title reveal" data-i18n="features.title">A Smarter Way to Learn</h2>
+        <p class="section-desc reveal reveal-delay-1" data-i18n="features.desc">
           Every course is built around real projects, guided by industry experts, and designed to fit your schedule.
         </p>
       </div>
 
-      <div class="bento-grid">
-        <!-- Card 1: Project-based (span 2) -->
-        <div class="bento-card bento-span-2 reveal reveal-delay-1">
-          <div class="bento-icon">
+      <div class="notion-grid">
+        <!-- Card 1: Project-based (wide) -->
+        <div class="notion-card notion-card-wide reveal reveal-delay-1">
+          <div class="notion-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
           </div>
-          <div class="bento-title" data-i18n="features.f1_title">Project-Based Curriculum</div>
-          <div class="bento-desc" data-i18n="features.f1_desc">Build real products from day one. Each course ends with a portfolio-ready project that demonstrates your skills to employers.</div>
-          <div class="bento-list">
-            <div class="bento-list-item">
+          <div class="notion-card-title" data-i18n="features.f1_title">Project-Based Curriculum</div>
+          <div class="notion-card-desc" data-i18n="features.f1_desc">Build real products from day one. Each course ends with a portfolio-ready project that demonstrates your skills to employers.</div>
+          <div class="notion-list">
+            <div class="notion-list-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               <span data-i18n="features.f1_li1">Real client briefs</span>
             </div>
-            <div class="bento-list-item">
+            <div class="notion-list-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               <span data-i18n="features.f1_li2">Peer code reviews</span>
             </div>
-            <div class="bento-list-item">
+            <div class="notion-list-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
               <span data-i18n="features.f1_li3">Portfolio website included</span>
             </div>
           </div>
         </div>
 
-        <!-- Card 2: Expert mentors (accent) -->
-        <div class="bento-card reveal reveal-delay-2">
-          <div class="bento-icon bento-icon-accent">
+        <!-- Card 2: Expert mentors -->
+        <div class="notion-card reveal reveal-delay-2">
+          <div class="notion-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <div class="bento-title" data-i18n="features.f2_title">Expert Mentors</div>
-          <div class="bento-desc" data-i18n="features.f2_desc">Learn from professionals at companies like Google, Figma, and Stripe who review your work and guide your growth.</div>
+          <div class="notion-card-title" data-i18n="features.f2_title">Expert Mentors</div>
+          <div class="notion-card-desc" data-i18n="features.f2_desc">Learn from professionals at companies like Google, Figma, and Stripe who review your work and guide your growth.</div>
         </div>
 
         <!-- Card 3: Flexible schedule -->
-        <div class="bento-card reveal reveal-delay-3">
-          <div class="bento-icon bento-icon-alt">
+        <div class="notion-card reveal reveal-delay-3">
+          <div class="notion-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <div class="bento-title" data-i18n="features.f3_title">Learn at Your Pace</div>
-          <div class="bento-desc" data-i18n="features.f3_desc">Self-paced with weekly live sessions. Average course takes 4–6 weeks at 8 hours per week.</div>
+          <div class="notion-card-title" data-i18n="features.f3_title">Learn at Your Pace</div>
+          <div class="notion-card-desc" data-i18n="features.f3_desc">Self-paced with weekly live sessions. Average course takes 4–6 weeks at 8 hours per week.</div>
         </div>
 
-        <!-- Card 4: Stats chart (span 2, gold) -->
-        <div class="bento-card bento-span-2 reveal reveal-delay-1">
-          <div class="bento-icon bento-icon-gold">
+        <!-- Card 4: Stats chart (wide) -->
+        <div class="notion-card notion-card-wide reveal reveal-delay-1">
+          <div class="notion-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
           </div>
-          <div class="bento-title" data-i18n="features.f4_title">Outcomes That Matter</div>
-          <div class="bento-desc" data-i18n="features.f4_desc">Our graduates see real career impact within 6 months of completing a program.</div>
-          <div class="bento-chart" id="bentoChart">
-            <div class="bento-bar" style="--h: 40%"></div>
-            <div class="bento-bar" style="--h: 55%"></div>
-            <div class="bento-bar" style="--h: 38%"></div>
-            <div class="bento-bar" style="--h: 72%"></div>
-            <div class="bento-bar" style="--h: 65%"></div>
-            <div class="bento-bar" style="--h: 85%"></div>
-            <div class="bento-bar" style="--h: 70%"></div>
-            <div class="bento-bar" style="--h: 92%"></div>
-            <div class="bento-bar" style="--h: 78%"></div>
-            <div class="bento-bar" style="--h: 60%"></div>
+          <div class="notion-card-title" data-i18n="features.f4_title">Outcomes That Matter</div>
+          <div class="notion-card-desc" data-i18n="features.f4_desc">Our graduates see real career impact within 6 months of completing a program.</div>
+          <div class="notion-chart" id="bentoChart">
+            <div class="notion-bar" style="--h: 40%"></div>
+            <div class="notion-bar" style="--h: 55%"></div>
+            <div class="notion-bar" style="--h: 38%"></div>
+            <div class="notion-bar" style="--h: 72%"></div>
+            <div class="notion-bar" style="--h: 65%"></div>
+            <div class="notion-bar" style="--h: 85%"></div>
+            <div class="notion-bar" style="--h: 70%"></div>
+            <div class="notion-bar" style="--h: 92%"></div>
+            <div class="notion-bar" style="--h: 78%"></div>
+            <div class="notion-bar" style="--h: 60%"></div>
           </div>
         </div>
 
         <!-- Card 5: Community -->
-        <div class="bento-card reveal reveal-delay-2">
-          <div class="bento-icon">
+        <div class="notion-card reveal reveal-delay-2">
+          <div class="notion-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.2 4.2a10 10 0 0 0 0 15.6"/><path d="M7.6 7.6a6 6 0 0 0 0 8.8"/><path d="M12 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/><path d="M19.8 4.2a10 10 0 0 1 0 15.6"/><path d="M16.4 7.6a6 6 0 0 1 0 8.8"/></svg>
           </div>
-          <div class="bento-title" data-i18n="features.f5_title">Active Community</div>
-          <div class="bento-desc" data-i18n="features.f5_desc">Join study groups, attend workshops, and connect with 50,000+ learners worldwide in our community.</div>
-          <div class="bento-dots" id="bentoDots">
-            <span class="bento-dot active"></span>
-            <span class="bento-dot active"></span>
-            <span class="bento-dot active"></span>
-            <span class="bento-dot"></span>
-            <span class="bento-dot"></span>
-            <span class="bento-dot"></span>
+          <div class="notion-card-title" data-i18n="features.f5_title">Active Community</div>
+          <div class="notion-card-desc" data-i18n="features.f5_desc">Join study groups, attend workshops, and connect with 50,000+ learners worldwide in our community.</div>
+          <div class="notion-dots" id="bentoDots">
+            <span class="notion-dot active"></span>
+            <span class="notion-dot active"></span>
+            <span class="notion-dot active"></span>
+            <span class="notion-dot"></span>
+            <span class="notion-dot"></span>
+            <span class="notion-dot"></span>
           </div>
         </div>
 
         <!-- Card 6: Certificate -->
-        <div class="bento-card reveal reveal-delay-3">
-          <div class="bento-icon bento-icon-gold">
+        <div class="notion-card reveal reveal-delay-3">
+          <div class="notion-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
           </div>
-          <div class="bento-title" data-i18n="features.f6_title">Industry Certificate</div>
-          <div class="bento-desc" data-i18n="features.f6_desc">Earn verifiable certificates recognized by top employers in tech, design, and business.</div>
+          <div class="notion-card-title" data-i18n="features.f6_title">Industry Certificate</div>
+          <div class="notion-card-desc" data-i18n="features.f6_desc">Earn verifiable certificates recognized by top employers in tech, design, and business.</div>
         </div>
       </div>
     </div>
@@ -1753,10 +1645,10 @@
        ============================================================ -->
   <section class="testimonials" id="testimonials">
     <div class="container">
-      <div class="testimonials-header">
-        <div class="section-label reveal" data-i18n="testimonials.label">Testimonials</div>
-        <h2 class="section-title reveal reveal-delay-1" data-i18n="testimonials.title">What Our Learners Say</h2>
-        <p class="section-desc reveal reveal-delay-2" data-i18n="testimonials.desc">
+      <div class="section-header">
+        <p class="kicker" data-i18n="testimonials.label">Testimonials</p>
+        <h2 class="section-title reveal" data-i18n="testimonials.title">What Our Learners Say</h2>
+        <p class="section-desc reveal reveal-delay-1" data-i18n="testimonials.desc">
           Thousands of students have transformed their careers through our programs.
         </p>
       </div>
@@ -1764,11 +1656,11 @@
       <div class="testimonials-grid">
         <div class="testimonial-card reveal reveal-delay-1">
           <div class="testimonial-stars">
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <p class="testimonial-text" data-i18n="testimonials.t1_text">
             "Kairos completely changed how I approach learning. The project-based curriculum helped me build a portfolio that got me hired within weeks of graduating."
@@ -1782,13 +1674,13 @@
           </div>
         </div>
 
-        <div class="testimonial-card testimonial-card-featured reveal reveal-delay-2">
+        <div class="testimonial-card reveal reveal-delay-2">
           <div class="testimonial-stars">
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <p class="testimonial-text" data-i18n="testimonials.t2_text">
             "The mentorship program is worth every penny. Having senior engineers review my code and guide my learning path accelerated my growth by years."
@@ -1804,11 +1696,11 @@
 
         <div class="testimonial-card reveal reveal-delay-3">
           <div class="testimonial-stars">
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg class="star-filled" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <p class="testimonial-text" data-i18n="testimonials.t3_text">
             "I was skeptical about online learning until I tried Kairos. The community is incredibly supportive, and the course quality rivals top universities."
@@ -1832,9 +1724,9 @@
     <div class="container">
       <div class="faq-inner">
         <div class="faq-header">
-          <div class="section-label reveal" data-i18n="faq.label">FAQ</div>
-          <h2 class="section-title reveal reveal-delay-1" data-i18n="faq.title">Common Questions</h2>
-          <p class="section-desc reveal reveal-delay-2" data-i18n="faq.desc">
+          <p class="kicker" data-i18n="faq.label">FAQ</p>
+          <h2 class="section-title" data-i18n="faq.title">Common Questions</h2>
+          <p class="section-desc section-desc-left" data-i18n="faq.desc">
             Everything you need to know about learning on Kairos Academy.
           </p>
         </div>
@@ -1914,10 +1806,10 @@
         <p class="newsletter-desc" data-i18n="newsletter.desc">
           Get weekly insights, course recommendations, and career tips from industry leaders.
         </p>
-        <div class="newsletter-form" id="newsletterForm">
+        <form class="newsletter-form" id="newsletterForm">
           <input type="email" class="newsletter-input" id="newsletterInput" placeholder="your@email.com" aria-label="Email address" required data-i18n="newsletter.placeholder">
-          <button class="btn btn-gold" data-i18n="newsletter.cta">Subscribe</button>
-        </div>
+          <button class="btn btn-primary" data-i18n="newsletter.cta">Subscribe</button>
+        </form>
         <div class="newsletter-success" id="newsletterSuccess">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           <span data-i18n="newsletter.success">You're subscribed! Check your inbox.</span>
@@ -2027,7 +1919,7 @@
         'hero.title2': 'Matters Most',
         'hero.desc': 'Expert-led courses in design, technology, and business — built around projects, not theory. Learn on your schedule with mentorship from industry professionals.',
         'hero.cta1': 'Explore Courses',
-        'hero.cta2': 'Watch Overview →',
+        'hero.cta2': 'Watch Overview',
         'hero.stat1_val': '50K+',
         'hero.stat1_lbl': 'Active Learners',
         'hero.stat2_val': '98%',
@@ -2141,7 +2033,7 @@
         'hero.title2': 'Más Importa',
         'hero.desc': 'Cursos dirigidos por expertos en diseño, tecnología y negocios — basados en proyectos, no en teoría. Aprende a tu ritmo con mentoría de profesionales.',
         'hero.cta1': 'Explorar Cursos',
-        'hero.cta2': 'Ver Resumen →',
+        'hero.cta2': 'Ver Resumen',
         'hero.stat1_val': '50K+',
         'hero.stat1_lbl': 'Estudiantes Activos',
         'hero.stat2_val': '98%',
@@ -2255,7 +2147,7 @@
         'hero.title2': 'Qui Compte',
         'hero.desc': 'Des cours animés par des experts en design, technologie et business — basés sur des projets, pas de la théorie. Apprenez à votre rythme avec le mentorat de professionnels.',
         'hero.cta1': 'Explorer les Cours',
-        'hero.cta2': 'Voir l\'Aperçu →',
+        'hero.cta2': 'Voir l\'Aperçu',
         'hero.stat1_val': '50K+',
         'hero.stat1_lbl': 'Apprenants Actifs',
         'hero.stat2_val': '98%',
@@ -2369,7 +2261,7 @@
         'hero.title2': 'Wirklich Zählt',
         'hero.desc': 'Expertengeführte Kurse in Design, Technologie und Business — projektbasiert, nicht theorielastig. Lerne in deinem Tempo mit Mentoring.',
         'hero.cta1': 'Kurse Entdecken',
-        'hero.cta2': 'Übersicht Ansehen →',
+        'hero.cta2': 'Übersicht Ansehen',
         'hero.stat1_val': '50K+',
         'hero.stat1_lbl': 'Aktive Lernende',
         'hero.stat2_val': '98%',
@@ -2483,7 +2375,7 @@
         'hero.title2': 'Conta Di Più',
         'hero.desc': 'Corsi guidati da esperti in design, tecnologia e business — basati su progetti, non teoria. Impara al tuo ritmo con il supporto di professionisti.',
         'hero.cta1': 'Esplora Corsi',
-        'hero.cta2': 'Guida Panoramica →',
+        'hero.cta2': 'Guida Panoramica',
         'hero.stat1_val': '50K+',
         'hero.stat1_lbl': 'Studenti Attivi',
         'hero.stat2_val': '98%',
@@ -2594,7 +2486,7 @@
         'hero.title2': 'Mais Importa',
         'hero.desc': 'Cursos liderados por especialistas em design, tecnologia e negócios — baseados em projetos, não em teoria. Aprenda no seu ritmo com mentoria de profissionais.',
         'hero.cta1': 'Explorar Cursos',
-        'hero.cta2': 'Ver Visão Geral →',
+        'hero.cta2': 'Ver Visão Geral',
         'hero.stat1_val': '50K+',
         'hero.stat1_lbl': 'Alunos Ativos',
         'hero.stat2_val': '98%',
@@ -2651,14 +2543,14 @@
         'faq.desc': 'Tudo que você precisa saber sobre aprender na Kairos Academy.',
         'faq.q1': 'Como funcionam os cursos?',
         'faq.a1': 'Cada curso combina videoaulas auto-ritmadas com projetos práticos. Você constrói produtos reais, recebe feedback personalizado e obtém um certificado.',
-        'faq.q2': 'Há garantia de reembolso?',
         'faq.a2': 'Absolutamente. Oferecemos 30 dias de garantia de reembolso em todos os cursos.',
-        'faq.q3': 'Que suporte os alunos recebem?',
+        'faq.q2': 'Há garantia de reembolso?',
         'faq.a3': 'Cada aluno tem acesso a um mentor dedicado, fóruns da comunidade, sessões de Q&A semanais e suporte técnico 24/7.',
-        'faq.q4': 'Os certificados são reconhecidos?',
+        'faq.q3': 'Que suporte os alunos recebem?',
         'faq.a4': 'Sim. Nossos certificados são verificados e reconhecidos por mais de 500 empresas, incluindo Google, Microsoft, Apple e Stripe.',
-        'faq.q5': 'Posso trocar de curso?',
+        'faq.q4': 'Os certificados são reconhecidos?',
         'faq.a5': 'Claro. Você pode trocar de curso nos primeiros 14 dias sem custo adicional.',
+        'faq.q5': 'Posso trocar de curso?',
 
         'newsletter.title': 'Fique à Frente',
         'newsletter.desc': 'Receba insights semanais, recomendações de cursos e dicas de carreira.',
@@ -2714,7 +2606,6 @@
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (strings[key]) {
-          // Check for input placeholder
           if (el.tagName === 'INPUT' && el.getAttribute('type') === 'email') {
             el.placeholder = strings[key];
           } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
@@ -2894,7 +2785,7 @@
         newsletterForm.classList.add('hidden');
         newsletterSuccess.classList.add('show');
       } else {
-        newsletterInput.style.borderColor = 'var(--color-error)';
+        newsletterInput.style.borderColor = 'var(--color-accent)';
         setTimeout(() => { newsletterInput.style.borderColor = ''; }, 2000);
       }
     });
@@ -2932,15 +2823,15 @@
             const fill = document.getElementById('progressFill');
             if (fill) setTimeout(() => fill.classList.add('animate'), 300);
           }
-          // Animate bento bars
-          if (entry.target.closest('.bento-chart')) {
-            entry.target.querySelectorAll('.bento-bar').forEach((bar, i) => {
+          // Animate notion bars
+          if (entry.target.closest('.notion-chart')) {
+            entry.target.querySelectorAll('.notion-bar').forEach((bar, i) => {
               setTimeout(() => bar.classList.add('animate'), i * 80);
             });
           }
-          // Animate bento dots
-          if (entry.target.closest('.bento-dots')) {
-            entry.target.querySelectorAll('.bento-dot').forEach((dot, i) => {
+          // Animate notion dots
+          if (entry.target.closest('.notion-dots')) {
+            entry.target.querySelectorAll('.notion-dot').forEach((dot, i) => {
               setTimeout(() => dot.classList.add('active'), i * 120);
             });
           }
