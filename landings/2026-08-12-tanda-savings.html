@@ -123,8 +123,9 @@
   --body: #b7c5d8;               /* 8.4:1 on --bg */
   --muted: #9fb2c8;              /* 6.5:1 on --bg */
   --faint: #8ca0b8;              /* 4.8:1 on --bg */
-  --accent: #5b54ff;
-  --accent-hover: #6e67ff;
+  --accent: #5b54ff;            /* 5.05:1 with white text — buttons & interactive bg */
+  --accent-hover: #655dff;      /* 4.60:1 with white — hover */
+  --accent-link: #7571ff;       /* 4.84:1 on --bg — links & accent text */
   --accent-soft: rgba(91, 84, 255, 0.16);
   --accent-border: rgba(155, 148, 255, 0.55);
   --line: rgba(255, 255, 255, 0.10);
@@ -144,6 +145,27 @@
   --blob-1: rgba(234, 34, 97, 0.12);
   --blob-2: rgba(249, 107, 238, 0.10);
 }
+
+/* Dark mode: links & accent text need the lighter accent for AA.
+   Buttons (.btn) keep their own colors — exclude them, and keep
+   .btn-ghost on the lighter accent so its label passes AA too. */
+[data-theme="dark"] a:not(.btn),
+[data-theme="dark"] .section-kicker,
+[data-theme="dark"] .step-num,
+[data-theme="dark"] .sim-note .mono,
+[data-theme="dark"] .mock-foot .link,
+[data-theme="dark"] .slider-label .val,
+[data-theme="dark"] .sim-payout .num,
+[data-theme="dark"] .faq-q .chev,
+[data-theme="dark"] .lang-opt[aria-current="true"],
+[data-theme="dark"] .btn-ghost { color: var(--accent-link); }
+[data-theme="dark"] .btn-ghost:hover { color: var(--accent-link); }
+/* Structural links keep their own color in dark (not accent) */
+[data-theme="dark"] .nav-links a,
+[data-theme="dark"] .mobile-menu .m-link { color: var(--ink); }
+[data-theme="dark"] .nav-actions .nav-signin { color: var(--ink); }
+[data-theme="dark"] .footer-col a { color: rgba(255, 255, 255, 0.85); }
+[data-theme="dark"] .footer .brand { color: #ffffff; }
 
 /* ---------- Reset & base ---------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1440,7 +1462,7 @@ SUPPORTED.forEach(function (l) {
 
 function money(n) {
   try {
-    return n.toLocaleString(lang === 'en' ? 'en-US' : lang, { style: 'currency', currency: lang === 'en' ? 'USD' : 'EUR', maximumFractionDigits: 0 });
+    return n.toLocaleString(lang === 'en' ? 'en-US' : lang, { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
   } catch (e) {
     return '\u20AC' + n.toLocaleString();
   }
