@@ -165,58 +165,55 @@
     }
 
     /* ----- Language Switcher ----- */
-    .lang-switcher {
-      display: flex;
-      gap: 2px;
-      align-items: center;
-    }
-
-    .lang-switcher__btn {
-      background: none;
-      border: none;
+    .lang-select { position: relative; display: inline-block; }
+    .lang-select__btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      height: 34px; padding: 0 0.8rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
       font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--color-text-inverse-secondary);
-      cursor: pointer;
-      padding: 4px 6px;
-      border-radius: var(--radius-sm);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
-    }
-
-    .lang-switcher__btn:hover {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.04em; text-transform: uppercase;
       color: var(--color-text-inverse);
+      cursor: pointer;
+      transition: color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
     }
-
-    .lang-switcher__btn--active {
-      color: var(--color-accent);
-      background: rgba(255, 255, 255, 0.08);
+    .lang-select__btn:hover, .lang-select__btn[aria-expanded="true"] {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--color-accent);
     }
-
-    .lang-switcher__divider {
-      width: 1px;
-      height: 12px;
-      background: rgba(255, 255, 255, 0.2);
+    .lang-select__chev { transition: transform var(--duration-fast) var(--ease-out); }
+    .lang-select__btn[aria-expanded="true"] .lang-select__chev { transform: rotate(180deg); }
+    .lang-select__menu {
+      position: absolute; top: calc(100% + 8px); right: 0; z-index: 100;
+      min-width: 176px; padding: 0.4rem;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+      opacity: 0; visibility: hidden; transform: translateY(-4px);
+      transition: all var(--duration-fast) var(--ease-out);
     }
-
-    .lang-switcher--light .lang-switcher__btn {
-      color: var(--color-text-secondary);
+    .lang-select__menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .lang-select__opt {
+      display: flex; align-items: center; gap: 0.5rem; width: 100%;
+      padding: 0.5rem 0.7rem;
+      background: none; border: none; border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.84375rem; font-weight: 500;
+      color: var(--color-text);
+      cursor: pointer; text-align: left;
+      transition: background var(--duration-fast) var(--ease-out);
     }
-
-    .lang-switcher--light .lang-switcher__btn:hover {
+    .lang-select__opt:hover { background: var(--color-accent-ghost); }
+    .lang-select__opt[aria-selected="true"] { color: var(--color-accent-dark); font-weight: 600; }
+    .lang-select__opt[aria-selected="true"]::after { content: '\2713'; margin-left: auto; }
+    .nav__lang-mobile .lang-select__btn {
+      background: transparent; border-color: var(--color-border);
       color: var(--color-text);
     }
-
-    .lang-switcher--light .lang-switcher__btn--active {
-      color: var(--color-accent-dark);
-      background: var(--color-accent-ghost);
-    }
-
-    .lang-switcher--light .lang-switcher__divider {
-      background: var(--color-border);
-    }
+    .nav__lang-mobile .lang-select__menu { right: 0; left: auto; min-width: 160px; }
 
     /* ----- Navigation ----- */
     .nav {
@@ -1507,7 +1504,22 @@
     <div class="nav__inner">
       <a href="#" class="nav__logo" data-i18n="brand">AUR<span>·</span>A</a>
 
-      <div class="nav__lang-mobile" id="navLangMobile"></div>
+      <div class="nav__lang-mobile" id="navLangMobile">
+        <div class="lang-select" id="langSelectMobile">
+          <button class="lang-select__btn" type="button" id="langBtnMobile" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+            <span class="lang-select__cur" id="langCurMobile">EN</span>
+            <svg class="lang-select__chev" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="lang-select__menu" role="listbox" aria-label="Choose language">
+            <button class="lang-select__opt" role="option" data-lang="en" aria-selected="true">English</button>
+            <button class="lang-select__opt" role="option" data-lang="es" aria-selected="false">Español</button>
+            <button class="lang-select__opt" role="option" data-lang="fr" aria-selected="false">Français</button>
+            <button class="lang-select__opt" role="option" data-lang="de" aria-selected="false">Deutsch</button>
+            <button class="lang-select__opt" role="option" data-lang="it" aria-selected="false">Italiano</button>
+            <button class="lang-select__opt" role="option" data-lang="pt" aria-selected="false">Português</button>
+          </div>
+        </div>
+      </div>
 
       <button class="nav__toggle" id="navToggle" aria-label="Menu" type="button">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
@@ -1522,18 +1534,19 @@
         <a href="#craft" class="nav__link" data-i18n="nav.craft">Craft</a>
         <a href="#sustainability" class="nav__link" data-i18n="nav.sustainability">Sustainability</a>
         <a href="#journal" class="nav__link" data-i18n="nav.journal">Journal</a>
-        <div class="lang-switcher" id="navLangDesktop">
-          <button class="lang-switcher__btn" data-lang="es">ES</button>
-          <span class="lang-switcher__divider"></span>
-          <button class="lang-switcher__btn lang-switcher__btn--active" data-lang="en">EN</button>
-          <span class="lang-switcher__divider"></span>
-          <button class="lang-switcher__btn" data-lang="fr">FR</button>
-          <span class="lang-switcher__divider"></span>
-          <button class="lang-switcher__btn" data-lang="de">DE</button>
-          <span class="lang-switcher__divider"></span>
-          <button class="lang-switcher__btn" data-lang="it">IT</button>
-          <span class="lang-switcher__divider"></span>
-          <button class="lang-switcher__btn" data-lang="pt">PT</button>
+        <div class="lang-select" id="navLangDesktop">
+          <button class="lang-select__btn" type="button" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+            <span class="lang-select__cur" id="langCur">EN</span>
+            <svg class="lang-select__chev" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="lang-select__menu" role="listbox" aria-label="Choose language">
+            <button class="lang-select__opt" role="option" data-lang="en" aria-selected="true">English</button>
+            <button class="lang-select__opt" role="option" data-lang="es" aria-selected="false">Español</button>
+            <button class="lang-select__opt" role="option" data-lang="fr" aria-selected="false">Français</button>
+            <button class="lang-select__opt" role="option" data-lang="de" aria-selected="false">Deutsch</button>
+            <button class="lang-select__opt" role="option" data-lang="it" aria-selected="false">Italiano</button>
+            <button class="lang-select__opt" role="option" data-lang="pt" aria-selected="false">Português</button>
+          </div>
         </div>
         <a href="#" class="nav__cta" data-i18n="nav.cta">Book an Appointment</a>
       </nav>
@@ -2552,8 +2565,9 @@
       if (metaDesc) metaDesc.textContent = t['hero.subtitle'] ? t['hero.subtitle'].replace(/<br>|<em>|\/em>/g, '').substring(0, 160) : '';
 
       // Update lang buttons
-      document.querySelectorAll('[data-lang]').forEach(btn => {
-        btn.classList.toggle('lang-switcher__btn--active', btn.dataset.lang === lang);
+      document.querySelectorAll('.lang-select__cur').forEach(el => { el.textContent = lang.toUpperCase(); });
+      document.querySelectorAll('.lang-select__opt').forEach(opt => {
+        opt.setAttribute('aria-selected', opt.dataset.lang === lang ? 'true' : 'false');
       });
 
       // Update html lang attribute
@@ -2570,12 +2584,43 @@
       applyLanguage(lang);
     }
 
+    // ----- Language switcher (dropdown) -----
+    function initLangSelect() {
+      document.querySelectorAll('.lang-select').forEach(function (sel) {
+        const btn = sel.querySelector('.lang-select__btn');
+        const menu = sel.querySelector('.lang-select__menu');
+        if (!btn || !menu) return;
+        function closeMenu() {
+          menu.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const open = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        document.addEventListener('click', function (e) {
+          if (!sel.contains(e.target)) closeMenu();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') closeMenu();
+        });
+      });
+    }
+    initLangSelect();
+
     // ----- Language switcher click handlers -----
     document.addEventListener('click', function(e) {
-      const btn = e.target.closest('[data-lang]');
+      const btn = e.target.closest('.lang-select__opt');
       if (btn) {
         e.preventDefault();
         applyLanguage(btn.dataset.lang);
+        // close all open lang menus
+        document.querySelectorAll('.lang-select__menu.open').forEach(m => {
+          m.classList.remove('open');
+          const b = m.parentElement.querySelector('.lang-select__btn');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
       }
     });
 

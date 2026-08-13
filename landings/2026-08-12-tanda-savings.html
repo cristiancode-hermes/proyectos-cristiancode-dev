@@ -307,12 +307,8 @@ p { text-wrap: pretty; }
 .mobile-menu.open { display: flex; }
 .mobile-menu a.m-link { color: var(--ink); font-size: 1.5rem; font-weight: 300; padding: 0.85rem 0; border-bottom: 1px solid var(--line); }
 .mobile-menu .m-actions { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
-.mobile-menu .lang-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
-.mobile-menu .lang-row button {
-  padding: 0.45rem 0.85rem; border: 1px solid var(--line); border-radius: var(--r-sm);
-  background: transparent; color: var(--ink); font-size: 0.9rem; cursor: pointer;
-}
-.mobile-menu .lang-row button[aria-current="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.mobile-menu .lang-wrap { margin-top: 1.5rem; }
+.mobile-menu .lang-menu { left: 0; right: auto; min-width: 180px; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; overflow: hidden; }
@@ -703,13 +699,19 @@ input[type="range"]::-moz-range-thumb {
     <a class="btn btn-primary btn-lg" href="#cta" data-i18n="nav_start">Start a circle</a>
     <a class="btn btn-ghost btn-lg" href="#pricing" data-i18n="nav_signin">Sign in</a>
   </div>
-  <div class="lang-row" id="mLangRow" role="group" aria-label="Choose language">
-    <button data-lang="en" aria-pressed="true">EN</button>
-    <button data-lang="es">ES</button>
-    <button data-lang="fr">FR</button>
-    <button data-lang="de">DE</button>
-    <button data-lang="it">IT</button>
-    <button data-lang="pt">PT</button>
+  <div class="lang-wrap" id="mLangRow">
+    <button class="lang-btn" type="button" id="mLangBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Language — Idioma">
+      <span id="mLangCur">EN</span>
+      <svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="lang-menu" id="mLangMenu" role="listbox" aria-label="Choose language">
+      <button class="lang-opt" role="option" data-lang="en" aria-selected="true">English</button>
+      <button class="lang-opt" role="option" data-lang="es" aria-selected="false">Español</button>
+      <button class="lang-opt" role="option" data-lang="fr" aria-selected="false">Français</button>
+      <button class="lang-opt" role="option" data-lang="de" aria-selected="false">Deutsch</button>
+      <button class="lang-opt" role="option" data-lang="it" aria-selected="false">Italiano</button>
+      <button class="lang-opt" role="option" data-lang="pt" aria-selected="false">Português</button>
+    </div>
   </div>
 </div>
 
@@ -1495,11 +1497,10 @@ function applyLang(next) {
   });
 
   $('#langCur').textContent = next.toUpperCase();
+  var mLangCur = $('#mLangCur');
+  if (mLangCur) mLangCur.textContent = next.toUpperCase();
   $$('.lang-opt').forEach(function (b) {
-    b.setAttribute('aria-current', b.getAttribute('data-lang') === next ? 'true' : 'false');
-  });
-  $$('#mLangRow button').forEach(function (b) {
-    b.setAttribute('aria-pressed', b.getAttribute('data-lang') === next ? 'true' : 'false');
+    b.setAttribute('aria-selected', b.getAttribute('data-lang') === next ? 'true' : 'false');
   });
   updateSim();
 }
@@ -1519,12 +1520,22 @@ $$('.lang-opt').forEach(function (b) {
     closeMobile();
   });
 });
-$$('#mLangRow button').forEach(function (b) {
-  b.addEventListener('click', function () {
-    applyLang(b.getAttribute('data-lang'));
-    closeMobile();
+var mLangBtn = $('#mLangBtn'), mLangMenu = $('#mLangMenu');
+if (mLangBtn && mLangMenu) {
+  mLangBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = mLangMenu.classList.toggle('open');
+    mLangBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-});
+  mLangMenu.querySelectorAll('.lang-opt').forEach(function (o) {
+    o.addEventListener('click', function () {
+      applyLang(o.getAttribute('data-lang'));
+      mLangMenu.classList.remove('open');
+      mLangBtn.setAttribute('aria-expanded', 'false');
+      closeMobile();
+    });
+  });
+}
 document.addEventListener('click', function (e) {
   if (!langWrapContains(e.target)) {
     langMenu.classList.remove('open');

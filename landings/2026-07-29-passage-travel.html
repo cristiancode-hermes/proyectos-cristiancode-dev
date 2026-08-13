@@ -388,33 +388,57 @@
     }
 
     /* Language Switcher */
-    .lang-switcher {
-      display: flex;
-      gap: 4px;
-      align-items: center;
-    }
-    .lang-switcher button {
-      background: none;
-      border: none;
-      cursor: pointer;
+    .lang-select { position: relative; display: inline-block; }
+    .lang-select__btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      height: 36px; padding: 0 0.85rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      font-family: var(--font-body);
       font-size: 0.8125rem;
       font-weight: 500;
-      color: var(--color-text-tertiary);
-      padding: 4px 6px;
-      border-radius: var(--radius-micro);
+      color: var(--color-text-primary);
+      cursor: pointer;
       transition: all var(--duration-fast) var(--ease-out-quart);
-      font-family: var(--font-body);
     }
-    .lang-switcher button:hover { color: var(--color-text-primary); background: var(--color-accent-ghost); }
-    .lang-switcher button.active { color: var(--color-accent); background: var(--color-accent-light); font-weight: 600; }
-    .lang-switcher .sep { color: var(--color-text-tertiary); font-size: 0.75rem; opacity: 0.4; }
+    .lang-select__btn:hover, .lang-select__btn[aria-expanded="true"] { border-color: var(--color-accent); color: var(--color-accent); }
+    .lang-select__chev { transition: transform var(--duration-fast) var(--ease-out-quart); }
+    .lang-select__btn[aria-expanded="true"] .lang-select__chev { transform: rotate(180deg); }
+    .lang-select__menu {
+      position: absolute; top: calc(100% + 8px); right: 0; z-index: 100;
+      min-width: 180px; padding: 0.4rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+      opacity: 0; visibility: hidden; transform: translateY(-4px);
+      transition: all var(--duration-fast) var(--ease-out-quart);
+    }
+    .lang-select__menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .lang-select__opt {
+      display: flex; align-items: center; gap: 0.5rem; width: 100%;
+      padding: 0.5rem 0.7rem;
+      background: none; border: none; border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.84375rem;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      cursor: pointer; text-align: left;
+      transition: background var(--duration-fast) var(--ease-out-quart);
+    }
+    .lang-select__opt:hover { background: var(--color-accent-ghost); }
+    .lang-select__opt[aria-selected="true"] { color: var(--color-accent); font-weight: 600; }
+    .lang-select__opt[aria-selected="true"]::after { content: '✓'; margin-left: auto; }
+    .lang-select__opt[aria-selected="true"]::after { content: '\2713'; margin-left: auto; }
 
     @media (max-width: 768px) {
-      .lang-switcher.desktop { display: none; }
-      .lang-switcher.mobile { display: flex; flex-wrap: wrap; padding: 8px 0; border-top: var(--border-whisper); margin-top: 8px; }
+      .lang-select.desktop { display: none; }
+      .lang-select.mobile { display: block; margin-top: 12px; padding-top: 12px; border-top: var(--border-whisper); }
+      .lang-select.mobile .lang-select__menu { right: auto; left: 0; }
     }
     @media (min-width: 769px) {
-      .lang-switcher.mobile { display: none; }
+      .lang-select.mobile { display: none; }
     }
 
     /* ----- Hero ----- */
@@ -860,13 +884,39 @@
         <a href="#testimonials" data-i18n="nav.testimonials">Stories</a>
         <a href="#features" data-i18n="nav.features">Why Passage</a>
 
-        <div class="lang-switcher mobile" id="langMobile"></div>
+        <div class="lang-select mobile" id="langMobile">
+          <button class="lang-select__btn" type="button" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+            <span class="lang-select__cur" id="langCur">EN</span>
+            <svg class="lang-select__chev" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="lang-select__menu" role="listbox" aria-label="Choose language">
+            <button class="lang-select__opt" role="option" data-lang="en" aria-selected="false">English</button>
+            <button class="lang-select__opt" role="option" data-lang="es" aria-selected="false">Español</button>
+            <button class="lang-select__opt" role="option" data-lang="fr" aria-selected="false">Français</button>
+            <button class="lang-select__opt" role="option" data-lang="de" aria-selected="false">Deutsch</button>
+            <button class="lang-select__opt" role="option" data-lang="it" aria-selected="false">Italiano</button>
+            <button class="lang-select__opt" role="option" data-lang="pt" aria-selected="false">Português</button>
+          </div>
+        </div>
 
         <a href="#newsletter" class="btn btn-primary btn-sm" data-i18n="nav.cta">Start Exploring</a>
       </div>
 
       <div style="display:flex;align-items:center;gap:12px;">
-        <div class="lang-switcher desktop" id="langDesktop"></div>
+        <div class="lang-select desktop" id="langDesktop">
+          <button class="lang-select__btn" type="button" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+            <span class="lang-select__cur" id="langCur">EN</span>
+            <svg class="lang-select__chev" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="lang-select__menu" role="listbox" aria-label="Choose language">
+            <button class="lang-select__opt" role="option" data-lang="en" aria-selected="false">English</button>
+            <button class="lang-select__opt" role="option" data-lang="es" aria-selected="false">Español</button>
+            <button class="lang-select__opt" role="option" data-lang="fr" aria-selected="false">Français</button>
+            <button class="lang-select__opt" role="option" data-lang="de" aria-selected="false">Deutsch</button>
+            <button class="lang-select__opt" role="option" data-lang="it" aria-selected="false">Italiano</button>
+            <button class="lang-select__opt" role="option" data-lang="pt" aria-selected="false">Português</button>
+          </div>
+        </div>
         <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <line x1="3" y1="6" x2="21" y2="6"/>
@@ -1702,48 +1752,50 @@
       if (twDesc && t['meta.desc']) twDesc.setAttribute('content', t['meta.desc']);
 
       // Update lang switcher buttons
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
+      document.querySelectorAll('.lang-select__cur').forEach(el => { el.textContent = lang.toUpperCase(); });
+      document.querySelectorAll('.lang-select__opt').forEach(opt => {
+        opt.setAttribute('aria-selected', opt.dataset.lang === lang ? 'true' : 'false');
       });
 
       // Update html lang attribute
       document.documentElement.lang = lang;
     }
 
-    function buildLangSwitcher(container) {
-      const langs = [
-        { code: 'en', label: 'EN' },
-        { code: 'es', label: 'ES' },
-        { code: 'fr', label: 'FR' },
-        { code: 'de', label: 'DE' },
-        { code: 'it', label: 'IT' },
-        { code: 'pt', label: 'PT' },
-      ];
-      container.innerHTML = '';
-      langs.forEach((l, i) => {
-        if (i > 0) {
-          const sep = document.createElement('span');
-          sep.className = 'sep';
-          sep.textContent = '·';
-          container.appendChild(sep);
-        }
-        const btn = document.createElement('button');
-        btn.className = 'lang-btn';
-        btn.dataset.lang = l.code;
-        btn.textContent = l.label;
-        btn.setAttribute('aria-label', `Switch language to ${l.label}`);
-        btn.addEventListener('click', () => applyLanguage(l.code));
-        container.appendChild(btn);
-      });
-    }
-
     /* ==============================================================
        Navigation
        ============================================================== */
+    function initLangSelect() {
+      document.querySelectorAll('.lang-select').forEach(function (sel) {
+        const btn = sel.querySelector('.lang-select__btn');
+        const menu = sel.querySelector('.lang-select__menu');
+        if (!btn || !menu) return;
+        function closeMenu() {
+          menu.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          const open = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        document.addEventListener('click', function (e) {
+          if (!sel.contains(e.target)) closeMenu();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') closeMenu();
+        });
+        menu.querySelectorAll('.lang-select__opt').forEach(opt => {
+          opt.addEventListener('click', function () {
+            applyLanguage(opt.getAttribute('data-lang'));
+            closeMenu();
+          });
+        });
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
-      // Build language switchers
-      buildLangSwitcher(document.getElementById('langDesktop'));
-      buildLangSwitcher(document.getElementById('langMobile'));
+      // Language switchers are static markup (lang-select); wire them up
+      initLangSelect();
 
       // Detect and apply language
       const detected = detectLang();

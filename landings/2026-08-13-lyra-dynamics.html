@@ -207,18 +207,39 @@ section[id] { scroll-margin-top: 84px; }
 .nav-links a:hover { color: var(--ink); }
 .nav-actions { display: flex; align-items: center; gap: 1.1rem; }
 
-.lang-switch { display: flex; align-items: center; gap: .1rem; }
-.lang-btn {
-  font-family: var(--font-mono);
-  font-size: .6875rem;
-  letter-spacing: .12em;
-  color: var(--dim);
-  padding: .3rem .42rem;
-  border-radius: 4px;
-  transition: color .25s var(--ease-out), background .25s var(--ease-out);
+.lang-select { position: relative; display: inline-block; }
+.lang-select__btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  height: 36px; padding: 0 .85rem;
+  font-family: var(--font-mono); font-size: .75rem; letter-spacing: .1em;
+  color: var(--ink); background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.22); border-radius: 8px;
+  cursor: pointer;
+  transition: border-color .25s var(--ease-out), background .25s var(--ease-out), color .25s var(--ease-out);
 }
-.lang-btn:hover { color: var(--ink); }
-.lang-btn.active { color: var(--accent-text); background: rgba(255,77,0,.12); }
+.lang-select__btn:hover, .lang-select__btn[aria-expanded="true"] { border-color: var(--accent); background: rgba(255,77,0,.08); }
+.lang-select__btn[aria-expanded="true"] { color: var(--accent-text); }
+.lang-select__chev { transition: transform .25s var(--ease-out); }
+.lang-select__btn[aria-expanded="true"] .lang-select__chev { transform: rotate(180deg); }
+.lang-select__menu {
+  position: absolute; top: calc(100% + 8px); right: 0; z-index: 100;
+  min-width: 172px; padding: .4rem;
+  background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+  opacity: 0; visibility: hidden; transform: translateY(-4px);
+  transition: opacity .2s var(--ease-out), transform .2s var(--ease-out), visibility .2s;
+}
+.lang-select__menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+.lang-select__opt {
+  display: flex; align-items: center; gap: .5rem; width: 100%;
+  padding: .5rem .65rem; border: none; background: none;
+  font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em;
+  color: var(--ink); text-align: left; border-radius: 6px; cursor: pointer;
+  transition: background .2s var(--ease-out), color .2s var(--ease-out);
+}
+.lang-select__opt:hover { background: rgba(255,77,0,.1); }
+.lang-select__opt[aria-selected="true"] { color: var(--accent-text); font-weight: 700; }
+.lang-select__opt[aria-selected="true"]::after { content: '✓'; margin-left: auto; }
 
 .nav-cta { padding: .72rem 1.35rem; font-size: .6875rem; }
 
@@ -259,8 +280,10 @@ section[id] { scroll-margin-top: 84px; }
   border-bottom: 1px solid var(--line);
   color: var(--ink);
 }
-.mobile-menu .lang-switch { margin-top: 2rem; }
-.mobile-menu .lang-btn { font-size: .9rem; padding: .5rem .75rem; }
+.mobile-menu .lang-select { margin-top: 2rem; }
+.mobile-menu .lang-select__btn { height: 40px; padding: 0 1rem; font-size: .8125rem; }
+.mobile-menu .lang-select__menu { right: auto; left: 0; min-width: 180px; }
+.mobile-menu .lang-select__opt { font-size: .8125rem; padding: .6rem .75rem; }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -631,7 +654,7 @@ blockquote.quote {
   .hero-media, .scene-media, .cta-media { background-attachment: scroll !important; }
   .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   .orbit-group, .orbit-group--rev, .orbit-group--polar, .sat-pulse, .hero-eyebrow .pulse-dot { animation: none !important; }
-  .btn, .nav, .lang-btn, .faq-a, .faq-icon, .mission, .footer-links a, .cookie { transition: none !important; }
+  .btn, .nav, .lang-select__btn, .faq-a, .faq-icon, .mission, .footer-links a, .cookie { transition: none !important; }
 }
 
 /* ---------- Responsive ---------- */
@@ -640,7 +663,7 @@ blockquote.quote {
 }
 @media (max-width: 1024px) {
   .nav-links { display: none; }
-  .nav .lang-switch { display: none; }
+  .nav .lang-select { display: none; }
   .burger { display: inline-flex; }
   .constellation-grid { grid-template-columns: 1fr; }
   .cap-row { grid-template-columns: 1fr; }
@@ -682,13 +705,19 @@ blockquote.quote {
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
     </nav>
     <div class="nav-actions">
-      <div class="lang-switch" role="group" aria-label="Language">
-        <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
-        <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
-        <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
-        <button class="lang-btn" data-lang="de" aria-label="Deutsch">DE</button>
-        <button class="lang-btn" data-lang="it" aria-label="Italiano">IT</button>
-        <button class="lang-btn" data-lang="pt" aria-label="Português">PT</button>
+      <div class="lang-select" id="langSelect">
+        <button class="lang-select__btn" type="button" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+          <span class="lang-select__cur" id="langCur">EN</span>
+          <svg class="lang-select__chev" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-select__menu" role="listbox" aria-label="Choose language">
+          <button class="lang-select__opt" role="option" data-lang="en" aria-selected="false">English</button>
+          <button class="lang-select__opt" role="option" data-lang="es" aria-selected="false">Español</button>
+          <button class="lang-select__opt" role="option" data-lang="fr" aria-selected="false">Français</button>
+          <button class="lang-select__opt" role="option" data-lang="de" aria-selected="false">Deutsch</button>
+          <button class="lang-select__opt" role="option" data-lang="it" aria-selected="false">Italiano</button>
+          <button class="lang-select__opt" role="option" data-lang="pt" aria-selected="false">Português</button>
+        </div>
       </div>
       <a href="#cta" class="btn nav-cta" data-i18n="nav.cta">Book a launch</a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
@@ -705,13 +734,19 @@ blockquote.quote {
   <a class="m-link" href="#capabilities" data-i18n="nav.capabilities">Capabilities</a>
   <a class="m-link" href="#process" data-i18n="nav.process">Process</a>
   <a class="m-link" href="#faq" data-i18n="nav.faq">FAQ</a>
-  <div class="lang-switch" role="group" aria-label="Language">
-    <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
-    <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
-    <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
-    <button class="lang-btn" data-lang="de" aria-label="Deutsch">DE</button>
-    <button class="lang-btn" data-lang="it" aria-label="Italiano">IT</button>
-    <button class="lang-btn" data-lang="pt" aria-label="Português">PT</button>
+  <div class="lang-select" >
+    <button class="lang-select__btn" type="button"  aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+          <span class="lang-select__cur" >EN</span>
+          <svg class="lang-select__chev" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lang-select__menu" role="listbox" aria-label="Choose language">
+      <button class="lang-select__opt" role="option" data-lang="en" aria-selected="false">English</button>
+      <button class="lang-select__opt" role="option" data-lang="es" aria-selected="false">Español</button>
+      <button class="lang-select__opt" role="option" data-lang="fr" aria-selected="false">Français</button>
+      <button class="lang-select__opt" role="option" data-lang="de" aria-selected="false">Deutsch</button>
+      <button class="lang-select__opt" role="option" data-lang="it" aria-selected="false">Italiano</button>
+      <button class="lang-select__opt" role="option" data-lang="pt" aria-selected="false">Português</button>
+    </div>
   </div>
 </div>
 
@@ -1401,8 +1436,11 @@ blockquote.quote {
       var key = el.getAttribute('data-i18n-ph');
       if (dict[key]) el.setAttribute('placeholder', dict[key]);
     });
-    document.querySelectorAll('.lang-btn').forEach(function (btn) {
-      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    document.querySelectorAll('.lang-select__cur').forEach(function (el) {
+      el.textContent = lang.toUpperCase();
+    });
+    document.querySelectorAll('.lang-select__opt').forEach(function (opt) {
+      opt.setAttribute('aria-selected', opt.getAttribute('data-lang') === lang ? 'true' : 'false');
     });
     try { localStorage.setItem('kairos-lang', lang); } catch (e) {}
   }
@@ -1410,10 +1448,36 @@ blockquote.quote {
   var currentLang = detectLang();
   applyLang(currentLang);
 
-  document.querySelectorAll('.lang-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      currentLang = btn.getAttribute('data-lang');
-      applyLang(currentLang);
+  function closeLangMenu() {
+    document.querySelectorAll('.lang-select').forEach(function (sel) {
+      var menu = sel.querySelector('.lang-select__menu');
+      var btn = sel.querySelector('.lang-select__btn');
+      if (!menu) return;
+      menu.classList.remove('open');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+  document.querySelectorAll('.lang-select').forEach(function (sel) {
+    var langBtn = sel.querySelector('.lang-select__btn');
+    var langMenuBox = sel.querySelector('.lang-select__menu');
+    if (!langBtn || !langMenuBox) return;
+    langBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = langMenuBox.classList.toggle('open');
+      langBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (e) {
+      if (!sel.contains(e.target)) closeLangMenu();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLangMenu();
+    });
+    langMenuBox.querySelectorAll('.lang-select__opt').forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        currentLang = opt.getAttribute('data-lang');
+        applyLang(currentLang);
+        closeLangMenu();
+      });
     });
   });
 

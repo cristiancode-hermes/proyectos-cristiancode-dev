@@ -149,28 +149,45 @@
     .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
 
     /* ---------- Language Switcher ---------- */
-    .lang-switcher {
-      display: flex; gap: 2px;
-      background: var(--surface-alt);
-      padding: 2px; border-radius: var(--radius-sm);
+    .lang-select {
       position: fixed; top: var(--gutter); right: var(--gutter);
       z-index: 50;
+    }
+    .lang-select__btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      height: 34px; padding: 0 0.75rem;
+      background: var(--surface-alt);
+      border: none; border-radius: 999px;
       box-shadow: var(--shadow-soft);
-    }
-    .lang-switcher button {
-      border: none; background: transparent;
-      color: var(--text-muted); cursor: pointer;
-      padding: 4px 8px; border-radius: 3px;
-      font-family: var(--font); font-size: 0.75rem; font-weight: 500;
-      transition: all 0.25s var(--ease);
+      color: var(--text-primary); cursor: pointer;
+      font-family: var(--font); font-size: 0.75rem; font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.04em;
+      transition: all 0.25s var(--ease);
     }
-    .lang-switcher button.active {
-      background: var(--teal); color: var(--white);
+    .lang-select__btn:hover, .lang-select__btn[aria-expanded="true"] { background: var(--teal); color: var(--white); }
+    .lang-select__chev { transition: transform 0.25s var(--ease); }
+    .lang-select__btn[aria-expanded="true"] .lang-select__chev { transform: rotate(180deg); }
+    .lang-select__menu {
+      position: absolute; top: calc(100% + 6px); right: 0; z-index: 60;
+      min-width: 168px; padding: 0.3rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+      opacity: 0; visibility: hidden; transform: translateY(-4px);
+      transition: all 0.25s var(--ease);
     }
-    .lang-switcher button:not(.active):hover {
-      color: var(--text-primary); background: var(--border-light);
+    .lang-select__menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .lang-select__opt {
+      display: flex; align-items: center; gap: 0.45rem; width: 100%;
+      padding: 0.45rem 0.6rem;
+      border: none; background: transparent; border-radius: 6px;
+      color: var(--text-primary); cursor: pointer; text-align: left;
+      font-family: var(--font); font-size: 0.8125rem; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      transition: all 0.15s var(--ease);
     }
+    .lang-select__opt:hover { background: var(--teal); color: var(--white); }
+    .lang-select__opt[aria-selected="true"] { background: var(--teal); color: var(--white); font-weight: 600; }
+    .lang-select__opt[aria-selected="true"]::after { content: '\2713'; margin-left: auto; }
 
     /* ---------- Header ---------- */
     header {
@@ -792,7 +809,7 @@
       .footer-grid { grid-template-columns: 1fr; }
       .cta-form { flex-direction: column; }
       .cookie-banner { flex-direction: column; text-align: center; }
-      .lang-switcher { top: auto; bottom: 1rem; right: 1rem; }
+      .lang-select { top: auto; bottom: 1rem; right: 1rem; }
       .section-title { font-size: 1.5rem; }
     }
 
@@ -813,13 +830,19 @@
 <body>
 
   <!-- Language Switcher -->
-  <div class="lang-switcher" role="navigation" aria-label="Language selector">
-    <button data-lang="en" class="active" aria-current="true">EN</button>
-    <button data-lang="es">ES</button>
-    <button data-lang="fr">FR</button>
-    <button data-lang="de">DE</button>
-    <button data-lang="it">IT</button>
-    <button data-lang="pt">PT</button>
+  <div class="lang-select" id="langSelect">
+    <button class="lang-select__btn" type="button" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+      <span class="lang-select__cur" id="langCur">EN</span>
+      <svg class="lang-select__chev" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="lang-select__menu" role="listbox" aria-label="Choose language">
+      <button class="lang-select__opt" role="option" data-lang="en" aria-selected="true">English</button>
+      <button class="lang-select__opt" role="option" data-lang="es" aria-selected="false">Español</button>
+      <button class="lang-select__opt" role="option" data-lang="fr" aria-selected="false">Français</button>
+      <button class="lang-select__opt" role="option" data-lang="de" aria-selected="false">Deutsch</button>
+      <button class="lang-select__opt" role="option" data-lang="it" aria-selected="false">Italiano</button>
+      <button class="lang-select__opt" role="option" data-lang="pt" aria-selected="false">Português</button>
+    </div>
   </div>
 
   <!-- Header -->
@@ -1849,9 +1872,10 @@
       if (twDesc) twDesc.textContent = LANG[lang]?.['tw-desc'] || LANG.en['tw-desc'];
 
       // Update lang switcher active state
-      document.querySelectorAll('.lang-switcher button').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-        btn.setAttribute('aria-current', btn.dataset.lang === lang ? 'true' : 'false');
+      var cur = document.getElementById('langCur');
+      if (cur) cur.textContent = lang.toUpperCase();
+      document.querySelectorAll('.lang-select__opt').forEach(opt => {
+        opt.setAttribute('aria-selected', opt.dataset.lang === lang ? 'true' : 'false');
       });
 
       // Update html lang attribute
@@ -1859,9 +1883,33 @@
     }
 
     // ---------- Language Switcher Events ----------
-    document.querySelectorAll('.lang-switcher button').forEach(btn => {
-      btn.addEventListener('click', () => applyLang(btn.dataset.lang));
-    });
+    var langBtn = document.getElementById('langBtn');
+    var langWrap = document.getElementById('langSelect');
+    var langMenu = langWrap ? langWrap.querySelector('.lang-select__menu') : null;
+    function closeLangMenu() {
+      if (!langMenu) return;
+      langMenu.classList.remove('open');
+      if (langBtn) langBtn.setAttribute('aria-expanded', 'false');
+    }
+    if (langBtn && langMenu) {
+      langBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = langMenu.classList.toggle('open');
+        langBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.addEventListener('click', (e) => {
+        if (!langWrap.contains(e.target)) closeLangMenu();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLangMenu();
+      });
+      langMenu.querySelectorAll('.lang-select__opt').forEach(opt => {
+        opt.addEventListener('click', () => {
+          applyLang(opt.getAttribute('data-lang'));
+          closeLangMenu();
+        });
+      });
+    }
 
     // ---------- Theme Detection ----------
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
