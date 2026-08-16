@@ -198,16 +198,24 @@
   [data-theme="dark"] .theme-toggle .sun-ic{ display:block; }
   [data-theme="dark"] .theme-toggle .moon-ic{ display:none; }
 
-  /* Lang switcher */
-  .lang-switcher{ display:flex; align-items:center; gap:2px; }
-  .lang-btn{
-    background:none; border:none; cursor:pointer;
-    font-size:.8125rem; font-weight:500; color:var(--ink-3);
-    padding:6px 5px; border-radius:6px; transition:all .2s var(--ease-out);
+  /* Lang selector (modern select that opens the options) */
+  .lang-select-wrap{ position:relative; display:inline-flex; align-items:center; }
+  .lang-select{
+    appearance:none; -webkit-appearance:none; -moz-appearance:none;
+    font-family:inherit; font-size:.8125rem; font-weight:600;
+    color:var(--ink-2); background:var(--surface);
+    border:1px solid var(--line-2); border-radius:8px;
+    padding:9px 30px 9px 12px; cursor:pointer; line-height:1;
+    transition:border-color .2s var(--ease-out), box-shadow .2s var(--ease-out);
   }
-  .lang-btn:hover{ color:var(--ink); background:var(--surface-2); }
-  .lang-btn.active{ color:var(--blue); background:var(--blue-tint); font-weight:600; }
-  .lang-btn .globe{ width:14px; height:14px; vertical-align:-2px; margin-right:2px; display:none; }
+  .lang-select:hover{ border-color:var(--ink-3); }
+  .lang-select:focus-visible{ outline:2px solid var(--blue); outline-offset:2px; }
+  .lang-select-wrap::after{
+    content:""; position:absolute; right:11px; top:calc(50% - 5px);
+    width:7px; height:7px; pointer-events:none;
+    border-right:1.6px solid var(--ink-3); border-bottom:1.6px solid var(--ink-3);
+    transform:rotate(45deg);
+  }
 
   .nav-cta{ padding:10px 16px; font-size:.875rem; }
 
@@ -223,7 +231,8 @@
     padding:.8rem .25rem; font-weight:500; color:var(--ink);
     border-bottom:1px solid var(--line); font-size:1rem;
   }
-  .mobile-menu .lang-switcher{ margin-top:1rem; justify-content:flex-start; }
+  .mobile-menu .lang-select-wrap{ margin-top:.9rem; }
+  .mobile-menu .lang-select{ width:100%; }
 
   /* ---- Hero ---- */
   .hero{ padding-block:clamp(3rem, 6.5vw, 5rem) clamp(3.5rem, 7vw, 5.5rem); overflow:hidden; }
@@ -390,11 +399,31 @@
   .chip i{ width:12px; height:12px; border-radius:3px; flex:none; }
 
   /* palette strip in teal panel */
-  .palette-strip{ display:flex; gap:8px; margin-top:1.5rem; }
-  .palette-strip i{ width:42px; height:42px; border-radius:12px; box-shadow:var(--shadow-sm); }
-  .palette-strip .pc1{ background:#d8a48f; } .palette-strip .pc2{ background:#8fa3a8; }
-  .palette-strip .pc3{ background:#c9d3c5; } .palette-strip .pc4{ background:#a3b18a; }
-  .palette-strip .pc5{ background:#7d8b6f; }
+  .palette-demo{ margin-top:1.5rem; }
+  .palette-pick{
+    display:inline-flex; align-items:center; gap:.5rem;
+    background:rgba(255,255,255,.7); border:1px solid var(--teal-ink);
+    color:var(--teal-ink); font-size:.8125rem; font-weight:600;
+    padding:8px 13px; border-radius:999px;
+    transition:background-color .2s var(--ease-out), transform .2s var(--ease-out), color .2s var(--ease-out);
+  }
+  [data-theme="dark"] .palette-pick{ background:rgba(255,255,255,.06); }
+  .palette-pick:hover{ background:var(--teal-ink); color:var(--teal); transform:translateY(-1px); }
+  .palette-pick:focus-visible{ outline:2px solid var(--teal-ink); outline-offset:2px; }
+  .palette-pick svg{ width:15px; height:15px; }
+  .palette-strip{ display:flex; gap:8px; margin-top:.9rem; }
+  .palette-strip i{
+    width:42px; height:42px; border-radius:12px; box-shadow:var(--shadow-sm);
+    cursor:pointer; transition:background-color .35s var(--ease-out), transform .25s var(--ease-out);
+  }
+  .palette-strip i:hover{ transform:translateY(-3px) scale(1.04); }
+  .palette-strip i:focus-visible{ outline:2px solid var(--teal-ink); outline-offset:2px; }
+  .palette-strip i.bump{ animation:palBump .4s var(--ease-out); }
+  @keyframes palBump{
+    0%{ transform:scale(.82); }
+    60%{ transform:scale(1.06); }
+    100%{ transform:scale(1); }
+  }
 
   /* comment bubble in yellow panel */
   .bubble{
@@ -605,8 +634,7 @@
     .news-form{ flex-direction:column; }
     .footer-grid{ grid-template-columns:1fr; gap:1.6rem; }
     .cookie{ left:1rem; right:1rem; max-width:none; }
-    .lang-btn .txt{ display:none; }
-    .lang-btn{ padding:6px 7px; }
+    .lang-select{ padding:10px 30px 10px 14px; }
     .logo-mark{ width:26px; height:26px; border-radius:8px; }
   }
 
@@ -646,7 +674,7 @@
           <svg class="moon-ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="sun-ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         </button>
-        <div class="lang-switcher" id="langSwitcher" role="group" aria-label="Language"></div>
+        <div class="lang-select-wrap" id="langSwitcher" aria-label="Language"></div>
         <a href="#pricing" class="btn btn-primary nav-cta" data-i18n="nav.cta">Start free</a>
         <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -659,7 +687,7 @@
       <a class="m-link" href="#gallery" data-i18n="nav.gallery">Inspiration</a>
       <a class="m-link" href="#pricing" data-i18n="nav.pricing">Pricing</a>
       <a class="m-link" href="#faq" data-i18n="nav.faq">FAQ</a>
-      <div class="lang-switcher" id="langSwitcherMobile" role="group" aria-label="Language"></div>
+      <div class="lang-select-wrap" id="langSwitcherMobile" aria-label="Language"></div>
     </div>
   </header>
 
@@ -768,7 +796,16 @@
         <article class="panel p-teal reveal d1">
           <h3 data-i18n="feat.2.title">Palettes that match</h3>
           <p data-i18n="feat.2.desc">Pick a color from any photo and MORADA builds a full room palette around it.</p>
-          <div class="palette-strip"><i class="pc1"></i><i class="pc2"></i><i class="pc3"></i><i class="pc4"></i><i class="pc5"></i></div>
+          <div class="palette-demo">
+            <button class="palette-pick" id="palettePick" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 22 1-1h3l9-9"/><path d="M3 21v-3l9-9"/><path d="m15 6 3.4-3.4a2.1 2.1 0 1 1 3 3L18 9l.4.4a2.1 2.1 0 1 1-3 3l-3.8-3.8a2.1 2.1 0 1 1 3-3l.4.4Z"/></svg>
+              <span data-i18n="feat.2.pick">Pick a color</span>
+            </button>
+            <input type="color" id="paletteInput" value="#b98a6a" class="visually-hidden" aria-label="Pick a color">
+            <div class="palette-strip" id="paletteStrip" role="list" aria-label="Generated palette">
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
         </article>
         <article class="panel p-yellow reveal d1">
           <h3 data-i18n="feat.3.title">Talk it out</h3>
@@ -1070,7 +1107,7 @@
       'how.s2.title':'Pin your ideas','how.s2.desc':'Drag in photos, swatches and furniture from anywhere. Boards fill up like a collage of taste.',
       'how.s3.title':'Decide together','how.s3.desc':'Leave comments, vote with hearts, and move pins until the plan feels like both of you.',
       'feat.1.title':'Pin anything','feat.1.desc':'Photos, fabrics, wood samples, floor plans. If you can see it, it has a place on your board.',
-      'feat.2.title':'Palettes that match','feat.2.desc':'Pick a color from any photo and MORADA builds a full room palette around it.',
+      'feat.2.title':'Palettes that match','feat.2.desc':'Pick a color from any photo and MORADA builds a full room palette around it.','feat.2.pick':'Pick a color',
       'feat.3.title':'Talk it out','feat.3.desc':'Comment on a single pin, not the whole board. Conversations stay where the idea lives.',
       'feat.4.title':'One board per room','feat.4.desc':'Keep every space organized. No more fifty screenshots lost in the chat.',
       'feat.5.title':'Share in one click','feat.5.desc':'A private link brings your partner, flatmate or architect onto the same canvas.',
@@ -1121,7 +1158,7 @@
       'how.s2.title':'Fija tus ideas','how.s2.desc':'Arrastra fotos, muestras y muebles desde cualquier lugar. El tablero crece como un collage de gustos.',
       'how.s3.title':'Decidid juntos','how.s3.desc':'Dejad comentarios, votad con corazones y moved las fijaciones hasta que el plan suene a los dos.',
       'feat.1.title':'Fija lo que sea','feat.1.desc':'Fotos, tejidos, muestras de madera, planos. Si lo ves, tiene sitio en tu tablero.',
-      'feat.2.title':'Paletas que combinan','feat.2.desc':'Elige un color de cualquier foto y MORADA construye toda la paleta de la habitación a su alrededor.',
+      'feat.2.title':'Paletas que combinan','feat.2.desc':'Elige un color de cualquier foto y MORADA construye toda la paleta de la habitación a su alrededor.','feat.2.pick':'Elige un color',
       'feat.3.title':'Habladlo','feat.3.desc':'Comenta una fijación concreta, no todo el tablero. La conversación vive donde está la idea.',
       'feat.4.title':'Un tablero por habitación','feat.4.desc':'Cada espacio organizado. Se acabaron las cincuenta capturas perdidas en el chat.',
       'feat.5.title':'Comparte con un clic','feat.5.desc':'Un enlace privado trae a tu pareja, compañera de piso o arquitecto al mismo lienzo.',
@@ -1172,7 +1209,7 @@
       'how.s2.title':'Épinglez vos idées','how.s2.desc':'Glissez photos, échantillons et meubles depuis n\'importe où. Le tableau se remplit comme un collage de goûts.',
       'how.s3.title':'Décidez ensemble','how.s3.desc':'Commentez, votez avec des cœurs, déplacez les épingles jusqu\'à ce que le plan vous ressemble à tous les deux.',
       'feat.1.title':'Épinglez tout','feat.1.desc':'Photos, tissus, échantillons de bois, plans. Si vous le voyez, il a sa place sur votre tableau.',
-      'feat.2.title':'Des palettes qui s\'accordent','feat.2.desc':'Choisissez une couleur dans n\'importe quelle photo et MORADA construit toute la palette de la pièce autour.',
+      'feat.2.title':'Des palettes qui s\'accordent','feat.2.desc':'Choisissez une couleur dans n\'importe quelle photo et MORADA construit toute la palette de la pièce autour.','feat.2.pick':'Choisissez une couleur',
       'feat.3.title':'Discutez-en','feat.3.desc':'Commentez une épingle précise, pas tout le tableau. La conversation reste là où vit l\'idée.',
       'feat.4.title':'Un tableau par pièce','feat.4.desc':'Chaque espace bien rangé. Fini les cinquante captures d\'écran perdues dans le chat.',
       'feat.5.title':'Partagez en un clic','feat.5.desc':'Un lien privé amène votre conjoint, colocataire ou architecte sur le même canevas.',
@@ -1223,7 +1260,7 @@
       'how.s2.title':'Ideen pinnen','how.s2.desc':'Zieht Fotos, Stoffmuster und Möbel von überallher. Das Board füllt sich wie ein Collage eures Geschmacks.',
       'how.s3.title':'Gemeinsam entscheiden','how.s3.desc':'Kommentiert, stimmt mit Herzen ab und verschiebt Pins, bis der Plan nach euch beiden klingt.',
       'feat.1.title':'Alles pinnen','feat.1.desc':'Fotos, Stoffe, Holzproben, Grundrisse. Wenn ihr es seht, hat es einen Platz auf eurem Board.',
-      'feat.2.title':'Paletten, die passen','feat.2.desc':'Wählt eine Farbe aus einem Foto und MORADA baut die komplette Raumpalette darum herum.',
+      'feat.2.title':'Paletten, die passen','feat.2.desc':'Wählt eine Farbe aus einem Foto und MORADA baut die komplette Raumpalette darum herum.','feat.2.pick':'Farbe auswählen',
       'feat.3.title':'Darüber reden','feat.3.desc':'Kommentiert einen einzelnen Pin, nicht das ganze Board. Gespräche bleiben dort, wo die Idee lebt.',
       'feat.4.title':'Ein Board pro Raum','feat.4.desc':'Jeder Raum organisiert. Schluss mit fünfzig verlorenen Screenshots im Chat.',
       'feat.5.title':'Mit einem Klick teilen','feat.5.desc':'Ein privater Link bringt Partner, Mitbewohner oder Architekten auf dieselbe Leinwand.',
@@ -1274,7 +1311,7 @@
       'how.s2.title':'Appunta le tue idee','how.s2.desc':'Trascina foto, campioni e mobili da ovunque. La board si riempie come un collage di gusti.',
       'how.s3.title':'Decidete insieme','how.s3.desc':'Lascia commenti, vota con i cuori e sposta gli appunti finché il piano non somiglia a entrambi.',
       'feat.1.title':'Appunta qualsiasi cosa','feat.1.desc':'Foto, tessuti, campioni di legno, piantine. Se lo vedi, ha un posto sulla tua board.',
-      'feat.2.title':'Palette che si abbinano','feat.2.desc':'Scegli un colore da qualsiasi foto e MORADA costruisce l\'intera palette della stanza attorno ad esso.',
+      'feat.2.title':'Palette che si abbinano','feat.2.desc':'Scegli un colore da qualsiasi foto e MORADA costruisce l\'intera palette della stanza attorno ad esso.','feat.2.pick':'Scegli un colore',
       'feat.3.title':'Parlatene','feat.3.desc':'Commenta un singolo appunto, non tutta la board. La conversazione vive dove sta l\'idea.',
       'feat.4.title':'Una board per stanza','feat.4.desc':'Ogni spazio organizzato. Basta con i cinquanta screenshot persi nella chat.',
       'feat.5.title':'Condividi con un clic','feat.5.desc':'Un link privato porta il tuo partner, coinquilino o architetto sulla stessa tela.',
@@ -1325,7 +1362,7 @@
       'how.s2.title':'Fixe as suas ideias','how.s2.desc':'Arraste fotos, amostras e móveis de qualquer lado. O quadro enche-se como uma colagem de gostos.',
       'how.s3.title':'Decidam juntos','how.s3.desc':'Deixem comentários, votem com corações e movam as fixações até o plano soar aos dois.',
       'feat.1.title':'Fixe o que quiser','feat.1.desc':'Fotos, tecidos, amostras de madeira, plantas. Se consegue ver, tem lugar no seu quadro.',
-      'feat.2.title':'Paletas que combinam','feat.2.desc':'Escolha uma cor de qualquer foto e a MORADA constrói a paleta completa da divisão à volta dela.',
+      'feat.2.title':'Paletas que combinam','feat.2.desc':'Escolha uma cor de qualquer foto e a MORADA constrói a paleta completa da divisão à volta dela.','feat.2.pick':'Escolha uma cor',
       'feat.3.title':'Conversem sobre isso','feat.3.desc':'Comente uma fixação específica, não o quadro inteiro. A conversa fica onde vive a ideia.',
       'feat.4.title':'Um quadro por divisão','feat.4.desc':'Cada espaço organizado. Chega de cinquenta capturas de ecrã perdidas no chat.',
       'feat.5.title':'Partilhe num clique','feat.5.desc':'Uma ligação privada traz o seu par, colega de casa ou arquiteto para o mesmo canvas.',
@@ -1413,29 +1450,28 @@
     if (twd) twd.setAttribute('content', t['meta.desc']);
     document.documentElement.lang = lang;
 
-    document.querySelectorAll('.lang-btn').forEach(function(btn){
-      btn.classList.toggle('active', btn.dataset.lang === lang);
+    document.querySelectorAll('.lang-select').forEach(function(sel){
+      sel.value = lang;
     });
   }
 
   function buildLangSwitcher(container){
     var langs = [
-      {code:'en',label:'EN'},{code:'es',label:'ES'},{code:'fr',label:'FR'},
-      {code:'de',label:'DE'},{code:'it',label:'IT'},{code:'pt',label:'PT'}
+      {code:'en',label:'English'},{code:'es',label:'Español'},{code:'fr',label:'Français'},
+      {code:'de',label:'Deutsch'},{code:'it',label:'Italiano'},{code:'pt',label:'Português'}
     ];
     container.innerHTML = '';
+    var sel = document.createElement('select');
+    sel.className = 'lang-select';
+    sel.setAttribute('aria-label', 'Language');
     langs.forEach(function(l){
-      var btn = document.createElement('button');
-      btn.className = 'lang-btn';
-      btn.dataset.lang = l.code;
-      btn.setAttribute('aria-label', 'Switch language to ' + l.label);
-      var txt = document.createElement('span');
-      txt.className = 'txt';
-      txt.textContent = l.label;
-      btn.appendChild(txt);
-      btn.addEventListener('click', function(){ applyLanguage(l.code); });
-      container.appendChild(btn);
+      var opt = document.createElement('option');
+      opt.value = l.code;
+      opt.textContent = l.label;
+      sel.appendChild(opt);
     });
+    sel.addEventListener('change', function(){ applyLanguage(sel.value); });
+    container.appendChild(sel);
   }
 
   /* ---- Theme ---- */
@@ -1462,6 +1498,82 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---- Palette demo (feat.2) ---- */
+  function hexToHsl(hex){
+    var r = parseInt(hex.slice(1,3),16)/255, g = parseInt(hex.slice(3,5),16)/255, b = parseInt(hex.slice(5,7),16)/255;
+    var max = Math.max(r,g,b), min = Math.min(r,g,b);
+    var h=0, s=0, l=(max+min)/2;
+    if (max !== min){
+      var d = max-min;
+      s = l > .5 ? d/(2-max-min) : d/(max+min);
+      switch(max){
+        case r: h = (g-b)/d + (g<b ? 6 : 0); break;
+        case g: h = (b-r)/d + 2; break;
+        case b: h = (r-g)/d + 4; break;
+      }
+      h *= 60;
+    }
+    return [Math.round(h), Math.round(s*100), Math.round(l*100)];
+  }
+  function hslToHex(h,s,l){
+    h = ((h % 360) + 360) % 360; s/=100; l/=100;
+    var c = (1 - Math.abs(2*l - 1)) * s, x = c * (1 - Math.abs((h/60) % 2 - 1)), m = l - c/2;
+    var r=0,g=0,b=0;
+    if (h < 60){ r=c; g=x; } else if (h < 120){ r=x; g=c; } else if (h < 180){ g=c; b=x; }
+    else if (h < 240){ g=x; b=c; } else if (h < 300){ r=x; b=c; } else { r=c; b=x; }
+    function to(v){ return Math.round((v+m)*255).toString(16).padStart(2,'0'); }
+    return '#' + to(r) + to(g) + to(b);
+  }
+  function buildPalette(base){
+    var hsl = hexToHsl(base);
+    var h = hsl[0], s = hsl[1], l = hsl[2];
+    return [
+      base,
+      hslToHex(h + 30, Math.min(100, s*0.85), Math.min(97, l + 14)),
+      hslToHex(h - 25, Math.min(100, s*0.9), Math.max(8,  l - 13)),
+      hslToHex(h + 160, Math.max(12, s*0.45), Math.min(96, l + 6)),
+      hslToHex(h + 320, Math.max(14, s*0.55), Math.max(10, l - 6))
+    ];
+  }
+  function initPaletteDemo(){
+    var btn = document.getElementById('palettePick');
+    var input = document.getElementById('paletteInput');
+    var strip = document.getElementById('paletteStrip');
+    if (!btn || !input || !strip) return;
+    var swatches = Array.prototype.slice.call(strip.children);
+    function render(hex, animate){
+      var pal = buildPalette(hex);
+      swatches.forEach(function(sw, i){
+        sw.style.background = pal[i];
+        sw.setAttribute('data-hex', pal[i]);
+        sw.setAttribute('aria-label', pal[i]);
+        if (animate){
+          sw.classList.remove('bump');
+          void sw.offsetWidth;
+          sw.classList.add('bump');
+        }
+      });
+    }
+    btn.addEventListener('click', function(){ input.click(); });
+    input.addEventListener('change', function(){ render(input.value, true); });
+    render('#b98a6a', false);
+    swatches.forEach(function(sw){
+      sw.setAttribute('tabindex', '0');
+      sw.setAttribute('role', 'listitem');
+      sw.addEventListener('click', function(){
+        input.value = sw.getAttribute('data-hex');
+        render(input.value, true);
+      });
+      sw.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          input.value = sw.getAttribute('data-hex');
+          render(input.value, true);
+        }
+      });
+    });
   }
 
   /* ---- Mobile menu ---- */
@@ -1518,6 +1630,7 @@
     document.getElementById('themeToggle').addEventListener('click', toggleTheme);
     setTheme(getTheme());
     initReveal();
+    initPaletteDemo();
     initMobileMenu();
     initNewsletter();
     initCookie();
