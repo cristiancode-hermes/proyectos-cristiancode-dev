@@ -161,11 +161,17 @@ img,svg{display:block;max-width:100%}
 .nl-msg{display:none;margin-top:.8rem;font-size:.88rem}
 .nl-msg.ok{display:block;color:#0f7a34}
 .nl-msg.err{display:block;color:#c23b32}
-.cookie{position:fixed;right:1rem;bottom:1rem;left:1rem;max-width:420px;margin:0 auto;background:var(--cta);color:var(--cta-ink);border-radius:14px;padding:1rem 1.1rem;display:flex;align-items:center;gap:.9rem;box-shadow:var(--shadow);transform:translateY(120%);transition:transform .35s var(--ease);z-index:90}
+.cookie{position:fixed;right:1rem;bottom:1rem;left:auto;width:min(420px,calc(100vw - 2rem));max-width:420px;margin:0;background:var(--cta);color:var(--cta-ink);border-radius:14px;padding:.75rem 1rem;display:flex;align-items:center;gap:.7rem;box-shadow:var(--shadow);transform:translateY(calc(100% + 1.5rem));transition:transform .35s var(--ease);z-index:90}
 .cookie.show{transform:translateY(0)}
-.cookie p{font-size:.86rem;flex:1}
+.cookie p{font-size:.86rem;flex:1;line-height:1.35}
 .cookie .btn{padding:.4rem .8rem;font-size:.82rem}
 .cookie .btn-primary{background:var(--cta-ink);color:var(--cta)}
+.cookie .btn-ghost{background:transparent;color:var(--cta-ink);border-color:rgba(255,255,255,.35);box-shadow:none}
+[data-theme="dark"] .cookie .btn-ghost{border-color:rgba(0,0,0,.25);color:var(--cta-ink)}
+@media (max-width:700px){
+  .cookie{top:calc(var(--nav-h,56px) + .5rem);bottom:auto;left:.75rem;right:.75rem;width:auto;max-width:none;transform:translateY(calc(-100% - 8rem))}
+  .cookie.show{transform:translateY(0)}
+}
 .footer{border-top:1px solid var(--line);padding:2rem 0 3rem}
 .footer-inner{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;font-size:.88rem;color:var(--muted)}
 .footer-links{display:flex;gap:1.2rem}
@@ -381,8 +387,8 @@ img,svg{display:block;max-width:100%}
         <input id="nlEmail" type="email" placeholder="you@example.com" data-i18n-ph="news_email" aria-label="Email">
         <button class="btn btn-primary" type="submit" data-i18n="news_sub">Subscribe</button>
       </form>
-      <div class="nl-msg ok" id="nlOk" data-i18n="news_ok">Thanks — you're on the list.</div>
-      <div class="nl-msg err" id="nlErr" data-i18n="news_err">Please enter a valid email.</div>
+      <div class="nl-msg" id="nlOk" data-i18n="news_ok" role="status" aria-live="polite">Thanks — you're on the list.</div>
+      <div class="nl-msg" id="nlErr" data-i18n="news_err" role="status" aria-live="polite">Please enter a valid email.</div>
     </div>
   </div>
 </section>
@@ -557,7 +563,12 @@ if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){
 var cookie=document.getElementById("cookieBanner");
 var acc=null; try{acc=localStorage.getItem("cita-cookie");}catch(e){}
 if(cookie && acc!=="1" && acc!=="0"){
-  var timer=setTimeout(function(){ cookie.classList.add("show"); },2500);
+  function placeCookie(){
+    var nav=document.querySelector(".nav");
+    if(nav) document.documentElement.style.setProperty("--nav-h", Math.ceil(nav.getBoundingClientRect().height)+"px");
+    cookie.classList.add("show");
+  }
+  var timer=setTimeout(placeCookie,2500);
   function dismiss(v){ try{localStorage.setItem("cita-cookie",v);}catch(e){} cookie.classList.remove("show"); clearTimeout(timer); }
   var okb=document.getElementById("cookieOk"); var nob=document.getElementById("cookieNo");
   if(okb) okb.addEventListener("click",function(){ dismiss("1"); });
