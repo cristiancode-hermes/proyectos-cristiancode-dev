@@ -89,13 +89,19 @@ img,svg{display:block;max-width:100%}
 .mobile-menu{display:none;border-top:1px solid var(--line);padding:1rem 0 1.4rem}
 .mobile-menu.open{display:block}
 .mobile-menu a{display:block;padding:.7rem 0;font-size:1.05rem;font-weight:500;color:var(--ink)}
+.mobile-menu a.btn-primary,.mobile-menu a.btn-cta-mobile{
+  display:inline-flex;align-items:center;justify-content:center;
+  color:#fff;background:var(--cta);
+  padding:.75rem 1.4rem;border-radius:999px;
+}
+.mobile-menu a.btn-primary:hover,.mobile-menu a.btn-cta-mobile:hover{background:var(--cta-hover);color:#fff}
 .mobile-menu .mm-actions{margin-top:.9rem;display:flex;gap:.6rem;flex-wrap:wrap}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:999px;font-weight:600;font-size:.98rem;padding:.85rem 1.6rem;border:1px solid transparent;cursor:pointer;transition:background .25s ease,color .25s ease,border-color .25s ease,transform .2s ease}
 .btn:hover{transform:translateY(-1px)}
-.btn-primary{background:var(--cta);color:var(--cta-ink)}
-.btn-primary:hover{background:var(--cta-hover)}
+.btn-primary,.btn-primary:visited{background:var(--cta);color:#fff}
+.btn-primary:hover{background:var(--cta-hover);color:#fff}
 .btn-ghost{border-color:var(--line-strong);color:var(--ink);background:transparent}
 .btn-ghost:hover{border-color:var(--copper);color:var(--copper)}
 .btn-white{background:var(--stage-ink);color:var(--stage)}
@@ -220,6 +226,8 @@ img,svg{display:block;max-width:100%}
 .ns-form .btn:hover{background:var(--cta-hover)}
 .ns-ok{display:none;margin-top:.8rem;color:#C4B8AC;font-size:.92rem}
 .ns-ok.show{display:block}
+.ns-ok a{color:#E08A5C;text-decoration:underline;text-underline-offset:2px}
+.ns-ok a:hover{color:#F4F3F1}
 @media (max-width:820px){.newsletter-grid{grid-template-columns:1fr}.ns-form{flex-direction:column;border-radius:18px}.ns-form .btn{width:100%}}
 
 /* Footer */
@@ -648,7 +656,7 @@ img,svg{display:block;max-width:100%}
         <input type="email" id="nsEmail" name="email" required placeholder="tucorreo@ejemplo.es" data-i18n-ph="nsPh" autocomplete="email">
         <button class="btn" type="submit" data-i18n="nsBtn">Suscribirme</button>
       </div>
-      <p class="ns-ok" id="nsOk" data-i18n="nsOk">¡Gracias! Te avisamos con la próxima fragua. (No te lo tomes a la ligera: los boletines son artesanales.)</p>
+      <p class="ns-ok" id="nsOk" data-i18n="nsOk" hidden>Esta landing no guarda correos. Escríbenos a <a href="mailto:hola@forja.es">hola@forja.es</a> y te añadimos a mano.</p>
     </form>
   </div>
 </section>
@@ -677,7 +685,7 @@ img,svg{display:block;max-width:100%}
       </div>
       <div>
         <h4 data-i18n="fHorTitle">Taller</h4>
-        <a href="#" data-i18n="fAdr">Calle del Oso 14, Lavapiés<br>28012 Madrid</a><br>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Calle+del+Oso+14,+28012+Madrid" target="_blank" rel="noopener noreferrer" data-i18n="fAdr">Calle del Oso 14, Lavapiés<br>28012 Madrid</a><br>
         <a href="tel:+34910123456">+34 910 123 456</a><br>
         <a href="mailto:hola@forja.es">hola@forja.es</a>
       </div>
@@ -773,7 +781,7 @@ img,svg{display:block;max-width:100%}
       nt: "El boletín de la fragua",
       np: "Una vez al mes, fotos de piezas recién salidas del yunque, un consejo de mantenimiento y las próximas fechas de visita al taller. Sin ruido, sin listas de compra: solo el oficio.",
       nsLabel: "Tu correo electrónico", nsPh: "tucorreo@ejemplo.es", nsBtn: "Suscribirme",
-      nsOk: "¡Gracias! Te avisamos con la próxima fragua. Los boletines también son artesanales.",
+      nsOk: "Esta landing no guarda correos. Escríbenos a <a href=\"mailto:hola@forja.es\">hola@forja.es</a> y te añadimos a mano.",
       fDesc: "Herrería y taller de cobre fundado en 1949. Tres generaciones forjando en el corazón de Lavapiés, Madrid.",
       fNavTitle: "Taller", fNav1: "El oficio", fNav2: "Obra reciente", fNav3: "Encargos y precios", fNav4: "Preguntas frecuentes",
       fHorTitle: "Taller", fAdr: "Calle del Oso 14, Lavapiés<br>28012 Madrid",
@@ -847,7 +855,7 @@ img,svg{display:block;max-width:100%}
       nt: "The forge newsletter",
       np: "Once a month: photos of pieces fresh off the anvil, one maintenance tip, and the next open-workshop dates. No noise, no shopping lists — just the craft.",
       nsLabel: "Your email address", nsPh: "you@example.com", nsBtn: "Subscribe",
-      nsOk: "Thank you! We'll write when the next fire burns. Newsletters are handcrafted too.",
+      nsOk: "This landing does not store emails. Write to <a href=\"mailto:hola@forja.es\">hola@forja.es</a> and we'll add you by hand.",
       fDesc: "Iron and copper workshop founded in 1949. Three generations forging in the heart of Lavapiés, Madrid.",
       fNavTitle: "Workshop", fNav1: "The craft", fNav2: "Recent work", fNav3: "Commissions & prices", fNav4: "FAQ",
       fHorTitle: "Workshop", fAdr: "14 Calle del Oso, Lavapiés<br>28012 Madrid",
@@ -921,7 +929,7 @@ img,svg{display:block;max-width:100%}
       nt: "La lettre de la forge",
       np: "Une fois par mois : des photos de pièces sorties de l'enclume, un conseil d'entretien et les prochaines dates de visite de l'atelier. Pas de bruit, pas de listes d'achats — juste l'artisanat.",
       nsLabel: "Votre e-mail", nsPh: "vous@exemple.fr", nsBtn: "S'abonner",
-      nsOk: "Merci ! Nous vous écrirons à la prochaine flamme. Les lettres sont artisanales elles aussi.",
+      nsOk: "Cette page ne conserve pas les e-mails. Écrivez à <a href=\"mailto:hola@forja.es\">hola@forja.es</a> — on vous ajoute à la main.",
       fDesc: "Atelier de fer et de cuivre fondé en 1949. Trois générations de forgerons au cœur de Lavapiés, Madrid.",
       fNavTitle: "Atelier", fNav1: "L'artisanat", fNav2: "Œuvres récentes", fNav3: "Commandes & tarifs", fNav4: "FAQ",
       fHorTitle: "Atelier", fAdr: "14 rue del Oso, Lavapiés<br>28012 Madrid",
@@ -995,7 +1003,7 @@ img,svg{display:block;max-width:100%}
       nt: "Der Schmiede-Newsletter",
       np: "Einmal im Monat: Fotos frisch vom Amboss, ein Pflegetipp und die nächsten Besuchstermine der Werkstatt. Kein Lärm, keine Kauflisten — nur das Handwerk.",
       nsLabel: "Ihre E-Mail-Adresse", nsPh: "sie@beispiel.de", nsBtn: "Abonnieren",
-      nsOk: "Danke! Wir melden uns beim nächsten Feuer. Newsletter sind hier auch Handarbeit.",
+      nsOk: "Diese Seite speichert keine E-Mails. Schreiben Sie an <a href=\"mailto:hola@forja.es\">hola@forja.es</a> — wir tragen Sie von Hand ein.",
       fDesc: "Werkstatt für Eisen und Kupfer, gegründet 1949. Drei Generationen schmieden im Herzen von Lavapiés, Madrid.",
       fNavTitle: "Werkstatt", fNav1: "Das Handwerk", fNav2: "Aktuelle Arbeiten", fNav3: "Aufträge & Preise", fNav4: "FAQ",
       fHorTitle: "Werkstatt", fAdr: "Calle del Oso 14, Lavapiés<br>28012 Madrid",
@@ -1069,7 +1077,7 @@ img,svg{display:block;max-width:100%}
       nt: "La newsletter della forgia",
       np: "Una volta al mese: foto di pezzi appena usciti dall'incudine, un consiglio di manutenzione e le prossime date di visita al laboratorio. Niente rumore, niente liste della spesa — solo il mestiere.",
       nsLabel: "La tua e-mail", nsPh: "tu@esempio.it", nsBtn: "Iscriviti",
-      nsOk: "Grazie! Ti scriviamo al prossimo fuoco. Anche le newsletter qui sono artigianali.",
+      nsOk: "Questa landing non salva email. Scrivici a <a href=\"mailto:hola@forja.es\">hola@forja.es</a> e ti aggiungiamo a mano.",
       fDesc: "Laboratorio di ferro e rame fondato nel 1949. Tre generazioni che forgiano nel cuore di Lavapiés, Madrid.",
       fNavTitle: "Laboratorio", fNav1: "Il mestiere", fNav2: "Opere recenti", fNav3: "Committenze e prezzi", fNav4: "FAQ",
       fHorTitle: "Laboratorio", fAdr: "Calle del Oso 14, Lavapiés<br>28012 Madrid",
@@ -1143,7 +1151,7 @@ img,svg{display:block;max-width:100%}
       nt: "O boletim da forja",
       np: "Uma vez por mês: fotos de peças acabadas de sair da bigorna, um conselho de manutenção e as próximas datas de visita à oficina. Sem ruído, sem listas de compras: só o ofício.",
       nsLabel: "O seu e-mail", nsPh: "voce@exemplo.pt", nsBtn: "Subscrever",
-      nsOk: "Obrigado! Avisamos na próxima forja. Os boletins também são artesanais.",
+      nsOk: "Esta landing não guarda emails. Escreve para <a href=\"mailto:hola@forja.es\">hola@forja.es</a> e adicionamos à mão.",
       fDesc: "Oficina de ferro e cobre fundada em 1949. Três gerações a forjar no coração de Lavapiés, Madrid.",
       fNavTitle: "Oficina", fNav1: "O ofício", fNav2: "Obra recente", fNav3: "Encomendas e preços", fNav4: "Perguntas frequentes",
       fHorTitle: "Oficina", fAdr: "Calle del Oso 14, Lavapiés<br>28012 Madrid",
@@ -1345,7 +1353,7 @@ img,svg{display:block;max-width:100%}
     });
   }
 
-  /* Newsletter */
+  /* Newsletter — no fake success. Static landing: point to mailto. */
   function initNewsletter() {
     var form = document.getElementById('newsletterForm');
     var ok = document.getElementById('nsOk');
@@ -1357,8 +1365,11 @@ img,svg{display:block;max-width:100%}
         email && email.focus();
         return;
       }
-      if (ok) ok.classList.add('show');
-      form.reset();
+      if (ok) {
+        ok.hidden = false;
+        ok.classList.add('show');
+      }
+      email.value = '';
     });
   }
 
