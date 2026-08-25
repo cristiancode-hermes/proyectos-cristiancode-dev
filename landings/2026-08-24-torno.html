@@ -106,7 +106,7 @@ img,svg{display:block;max-width:100%}
 .nav-actions{display:flex;align-items:center;gap:.55rem}
 .icon-btn{width:40px;height:40px;border-radius:var(--pill);border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease)}
 .icon-btn:hover{border-color:var(--matcha);color:var(--matcha)}
-.lang-select{position:relative}
+.lang-select{position:relative;display:inline-block;flex:none}
 .lang-select__btn{display:inline-flex;align-items:center;gap:.4rem;height:40px;padding:0 .8rem;border-radius:var(--pill);border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:.8rem;font-weight:600;font-family:var(--mono);cursor:pointer;transition:border-color .2s var(--ease),color .2s var(--ease)}
 .lang-select__btn:hover,.lang-select__btn[aria-expanded="true"]{border-color:var(--matcha);color:var(--matcha)}
 .lang-select__chev{transition:transform .2s var(--ease)}
@@ -128,8 +128,9 @@ img,svg{display:block;max-width:100%}
 .btn-ghost:hover{border-color:var(--matcha);color:var(--matcha);transform:rotate(2deg) translateY(-2px);box-shadow:var(--hard-white),var(--soft)}
 .btn-sm{padding:.55rem 1rem;font-size:.85rem;border-radius:10px}
 .burger{display:none}
-.nav-desktop-only{display:contents}
+nav.nav-desktop-only{display:contents}
 @media (max-width:900px){.nav-desktop-only{display:none!important}}
+.nav-actions > .btn-primary{flex:none;color:#fff;background:var(--matcha)}
 .mobile-menu{display:none;border-top:1px solid var(--line);padding:1rem 0 1.4rem}
 .mobile-menu.open{display:block}
 .mobile-menu a{display:block;padding:.7rem 0;color:var(--ink);font-weight:500}
@@ -479,7 +480,7 @@ img,svg{display:block;max-width:100%}
         </li>
         <li class="step rv">
           <span class="n">04</span>
-          <h3 data-i18n="s4.t">Cocar</h3>
+          <h3 data-i18n="s4.t">Cocer</h3>
           <p data-i18n="s4.d">Primera cocción a 1000 °C, esmalte al gusto, segunda a 1240. El fuego es el último autor y nunca firma igual.</p>
         </li>
       </ol>
@@ -603,23 +604,23 @@ img,svg{display:block;max-width:100%}
       </div>
       <div class="faq-list">
         <div class="faq-item rv">
-          <button class="faq-q" type="button" aria-expanded="false" data-i18n="faq.q1">¿Puedo empezar sin haber tocado barro?<span class="ic" aria-hidden="true">+</span></button>
+          <button class="faq-q" type="button" aria-expanded="false"><span data-i18n="faq.q1">¿Puedo empezar sin haber tocado barro?</span><span class="ic" aria-hidden="true">+</span></button>
           <div class="faq-a"><p data-i18n="faq.a1">Sí, es lo normal. El 80 % de quien llega no ha amasado nunca. La primera clase es mitad técnica: centrar, abrir, subir pared — con un torno para cada alumna y un video de cómo no hacerlo.</p></div>
         </div>
         <div class="faq-item rv">
-          <button class="faq-q" type="button" aria-expanded="false" data-i18n="faq.q2">¿Y si se me rompe una pieza en el horno?<span class="ic" aria-hidden="true">+</span></button>
+          <button class="faq-q" type="button" aria-expanded="false"><span data-i18n="faq.q2">¿Y si se me rompe una pieza en el horno?</span><span class="ic" aria-hidden="true">+</span></button>
           <div class="faq-a"><p data-i18n="faq.a2">Nos ha pasado a todas. El barro se reutiliza: las piezas rotas se machacan y vuelven a ser barro. Si es tuya y se rompió, la primera sustitución de material es gratis.</p></div>
         </div>
         <div class="faq-item rv">
-          <button class="faq-q" type="button" aria-expanded="false" data-i18n="faq.q3">¿Cocháis piezas que no son del taller?<span class="ic" aria-hidden="true">+</span></button>
+          <button class="faq-q" type="button" aria-expanded="false"><span data-i18n="faq.q3">¿Cocéis piezas que no son del taller?</span><span class="ic" aria-hidden="true">+</span></button>
           <div class="faq-a"><p data-i18n="faq.a3">Sí, el plan Estudio y horno incluye hornadas para proyectos propios. Las piezas se apilan por temperatura y se avisa con 48 h de antelación.</p></div>
         </div>
         <div class="faq-item rv">
-          <button class="faq-q" type="button" aria-expanded="false" data-i18n="faq.q4">¿Hay aparcamiento y acceso con movilidad reducida?<span class="ic" aria-hidden="true">+</span></button>
+          <button class="faq-q" type="button" aria-expanded="false"><span data-i18n="faq.q4">¿Hay aparcamiento y acceso con movilidad reducida?</span><span class="ic" aria-hidden="true">+</span></button>
           <div class="faq-a"><p data-i18n="faq.a4">El taller está en planta baja con acceso a pie de calle y hay un parking municipal a 200 m. Las mesas de trabajo son regulables en altura.</p></div>
         </div>
         <div class="faq-item rv">
-          <button class="faq-q" type="button" aria-expanded="false" data-i18n="faq.q5">¿Qué incluye la primera clase?<span class="ic" aria-hidden="true">+</span></button>
+          <button class="faq-q" type="button" aria-expanded="false"><span data-i18n="faq.q5">¿Qué incluye la primera clase?</span><span class="ic" aria-hidden="true">+</span></button>
           <div class="faq-a"><p data-i18n="faq.a5">Delantal, medio kilo de barro, un torno y la paciencia de la maestra. Te llevas tu pieza biscochada gratis como primer recuerdo.</p></div>
         </div>
       </div>
@@ -689,7 +690,8 @@ img,svg{display:block;max-width:100%}
 <script>
 (function () {
 'use strict';
-document.documentElement.classList.remove('no-js');
+/* Keep html.no-js until reveal is wired — otherwise .rv stays opacity:0 forever. */
+try {
 
 /* ============ I18N ============ */
 var I18N = {
@@ -709,7 +711,7 @@ var I18N = {
     's1.t':'Amasar','s1.d':'Aire fuera, cuerpo dentro. El barro se golpea, se dobla y se amasa hasta que no guarda ni una burbuja que pueda reventar en el horno.',
     's2.t':'Tornear','s2.d':'El centro del plato es el centro del mundo. Se centra, se abre, se sube la pared: horas de dedos mojados hasta que la pieza nace sola.',
     's3.t':'Secar','s3.d':'Despacio. Un secado torpe rompe lo que el torno hizo bien: la pieza se envuelve, se vigila y espera su punto de cuero.',
-    's4.t':'Cocar','s4.d':'Primera cocción a 1000 °C, esmalte al gusto, segunda a 1240. El fuego es el último autor y nunca firma igual.',
+    's4.t':'Cocer','s4.d':'Primera cocción a 1000 °C, esmalte al gusto, segunda a 1240. El fuego es el último autor y nunca firma igual.',
     'courses.title':'Manos a la obra',
     'courses.sub':'Tres maneras de entrar. Todas empiezan sucias de barro y terminan con algo tuyo en la estantería.',
     'courses.avail':'Plazas limitadas a 6 por grupo',
@@ -734,7 +736,7 @@ var I18N = {
     'faq.title':'Preguntas de taller',
     'faq.q1':'¿Puedo empezar sin haber tocado barro?','faq.a1':'Sí, es lo normal. El 80 % de quien llega no ha amasado nunca. La primera clase es mitad técnica: centrar, abrir, subir pared — con un torno para cada alumna y un video de cómo no hacerlo.',
     'faq.q2':'¿Y si se me rompe una pieza en el horno?','faq.a2':'Nos ha pasado a todas. El barro se reutiliza: las piezas rotas se machacan y vuelven a ser barro. Si es tuya y se rompió, la primera sustitución de material es gratis.',
-    'faq.q3':'¿Cocháis piezas que no son del taller?','faq.a3':'Sí, el plan Estudio y horno incluye hornadas para proyectos propios. Las piezas se apilan por temperatura y se avisa con 48 h de antelación.',
+    'faq.q3':'¿Cocéis piezas que no son del taller?','faq.a3':'Sí, el plan Estudio y horno incluye hornadas para proyectos propios. Las piezas se apilan por temperatura y se avisa con 48 h de antelación.',
     'faq.q4':'¿Hay aparcamiento y acceso con movilidad reducida?','faq.a4':'El taller está en planta baja con acceso a pie de calle y hay un parking municipal a 200 m. Las mesas de trabajo son regulables en altura.',
     'faq.q5':'¿Qué incluye la primera clase?','faq.a5':'Delantal, medio kilo de barro, un torno y la paciencia de la maestra. Te llevas tu pieza biscochada gratis como primer recuerdo.',
     'news.title':'Cartas de barro',
@@ -1058,6 +1060,7 @@ var I18N = {
 /* ============ helpers ============ */
 function $(s, c) { return (c || document).querySelector(s); }
 function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
+var LANGS = ['en', 'es', 'fr', 'de', 'it', 'pt'];
 
 /* ============ theme ============ */
 var THEME_KEY = 'kairos-theme';
@@ -1084,14 +1087,14 @@ applyTheme(getTheme());
 
 /* ============ i18n apply ============ */
 var HTML_KEYS = { 'hero.title': true };
-var LANGS = ['en', 'es', 'fr', 'de', 'it', 'pt'];
 function getLang() {
   var saved = null;
   try { saved = localStorage.getItem('torno-lang'); } catch (e) {}
   if (saved && I18N[saved]) return saved;
   var nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-  for (var i = 0; i < LANGS.length; i++) {
-    if (nav.indexOf(LANGS[i]) === 0) return LANGS[i];
+  var langs = LANGS || ['en', 'es', 'fr', 'de', 'it', 'pt'];
+  for (var i = 0; i < langs.length; i++) {
+    if (nav.indexOf(langs[i]) === 0) return langs[i];
   }
   return 'en';
 }
@@ -1241,8 +1244,26 @@ function onScroll() {
 }
 window.addEventListener('scroll', onScroll, { passive: true });
 window.addEventListener('resize', onScroll, { passive: true });
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) en.target.classList.add('in');
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.01 });
+  rvEls.forEach(function (el) { io.observe(el); });
+}
 revealCheck();
+document.documentElement.classList.remove('no-js');
 setTimeout(revealCheck, 600);
+setTimeout(function () {
+  var vh = window.innerHeight || document.documentElement.clientHeight;
+  var missed = false;
+  rvEls.forEach(function (el) {
+    var r = el.getBoundingClientRect();
+    if (r.top < vh * 0.92 && r.bottom > 0 && !el.classList.contains('in')) missed = true;
+  });
+  if (missed) rvEls.forEach(function (el) { el.classList.add('in'); });
+}, 1800);
 
 /* ============ FAQ accordion ============ */
 $$('.faq-item').forEach(function (item) {
@@ -1304,6 +1325,11 @@ if (newsForm) {
 
 /* ============ boot ============ */
 applyLang(getLang());
+} catch (bootErr) {
+  document.documentElement.classList.add('no-js');
+  var stuck = document.querySelectorAll('.rv');
+  for (var i = 0; i < stuck.length; i++) stuck[i].classList.add('in');
+}
 })();
 </script>
 </body>
