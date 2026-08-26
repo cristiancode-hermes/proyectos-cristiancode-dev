@@ -70,7 +70,7 @@
   --line:#33363B; --line-strong:#464A51;
   --red:#E06A8E; --red-hover:#F08AA8; --red-deep:#F08AA8; --red-ink:#1C0F14;
   --wilink:#F08AA8;
-  --teal:#7FA7A2; --teal-soft:#25363B; --teal-faint:#3A4B4F;
+  --teal:#7FA7A2; --teal-soft:#25363B; --teal-faint:#B5C9C6;
   --pink:#F08AA8; --pink-soft:#3A2630; --pink-ink:#F0F1F2;
   --peach-soft:#2A2622; --wish:#F08AA8;
   --warm:#221F1B; --warm-line:#40362C; --warm-ink:#E9E0D3;
@@ -326,8 +326,8 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,select:focus-visib
 .cookie p{font-size:.85rem;flex:1;line-height:1.4;color:#fff}
 .cookie .cookie-actions{display:flex;gap:.5rem;flex:none}
 .cookie .ck{font-family:var(--sans);font-size:.8rem;font-weight:700;border-radius:var(--r);padding:.55rem .9rem;cursor:pointer;border:1px solid transparent}
-.cookie .ck-ok{background:#fff;color:var(--teal)}
-.cookie .ck-ok:hover{background:var(--teal-faint)}
+.cookie .ck-ok{background:#fff;color:#0F252B}
+.cookie .ck-ok:hover{background:#C9D6D4;color:#0F252B}
 .cookie .ck-no{background:transparent;color:#fff;border-color:rgba(255,255,255,0.4)}
 .cookie .ck-no:hover{border-color:#fff}
 @media (max-width:700px){
@@ -611,7 +611,7 @@ a:focus-visible,button:focus-visible,[tabindex]:focus-visible,select:focus-visib
           <button class="btn" type="submit" data-i18n="news.btn">Suscribirme</button>
         </form>
         <p class="nl-msg" id="nlMsg" role="status"></p>
-        <p class="nl-honest" data-i18n="news.honest">La lista de cosecha es real: no enviamos publicidad. También puedes escribirnos a <a href="mailto:hola@salinas.es">hola@salinas.es</a></p>
+        <p class="nl-honest" data-i18n-html="news.honest">La lista de cosecha es real: no enviamos publicidad. También puedes escribirnos a <a href="mailto:hola@salinas.es">hola@salinas.es</a>.</p>
       </div>
     </div>
   </div>
@@ -716,11 +716,7 @@ var T = {
     'q5':'Can I gift fleur de sel?','a5':'Of course. Packed in a handmade ceramic jar, it is the perfect gift for anyone who loves to cook. Add a note with the salt flat\'s origin.',
     'news.title':'The best <em>brine notes</em>,<br>once a month','news.sub':'One email with the month\'s harvest, recipes from Michelin kitchens and soon the salt flat that will open its doors. No noise.',
     'news.ph':'your@email.com','news.btn':'Subscribe','news.ok':'We just opened your mail client so you can send us your email. Thank you!',
-    'news.honest':'A lista da colheita é real: não enviamos publicidade. Pode também escrever-nos para <a href="mailto:hola@salinas.es">hola@salinas.es</a>',
-    'news.honest':'La lista della raccolta è reale: non inviamo pubblicità. Puoi anche scriverci a <a href="mailto:hola@salinas.es">hola@salinas.es</a>',
-    'news.honest':'Die Ernteliste ist echt: Wir verschicken keine Werbung. Sie können uns auch schreiben an <a href="mailto:hola@salinas.es">hola@salinas.es</a>',
-    'news.honest':'La liste de la récolte est réelle : nous n’envoyons pas de publicité. Vous pouvez aussi nous écrire à <a href="mailto:hola@salinas.es">hola@salinas.es</a>',
-    'news.honest':'La lista de cosecha es real: no enviamos publicidad. También puedes escribirnos a <a href="mailto:hola@salinas.es">hola@salinas.es</a>',
+    'news.honest':'The harvest list is real: we do not send ads. You can also write to us at <a href="mailto:hola@salinas.es">hola@salinas.es</a>.',
     'cookie.msg':'We use cookies only to remember your language and theme. No tracking.','cookie.ok':'OK','cookie.no':'No',
     'footer.desc':'The fleur de sel of Cádiz, on your table. An honest marketplace that feeds the family salt flats sustaining this coast.',
     'footer.market':'Shop','footer.company':'The house','footer.legal':'Legal',
@@ -987,7 +983,7 @@ var T = {
 };
 
 var LANGS = ['en','es','fr','de','it','pt'];
-var HTML_KEYS = { 'hero.title': true, 'quote.text': true, 'news.title': true };
+var HTML_KEYS = { 'hero.title': true, 'quote.text': true, 'news.title': true, 'news.honest': true, 'riv.1': true };
 var $ = function (s, c) { return (c || document).querySelector(s); };
 var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
