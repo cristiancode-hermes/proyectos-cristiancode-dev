@@ -175,6 +175,7 @@ section{scroll-margin-top:calc(var(--nav-h) + 12px)}
 .cmp-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}
 .profile{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px}
 .profile.hot{border-color:#151515;background:var(--volt);color:var(--volt-ink)}
+.profile.hot h2,.profile.hot h3{color:var(--volt-ink)}
 .profile.hot p,.profile.hot .drop{color:#3A3C00}
 .profile h3{font-size:2rem;margin-bottom:.35rem}
 .drop{font-family:var(--mono);font-size:.78rem;color:var(--faint);margin-bottom:1rem}
@@ -266,8 +267,9 @@ section{scroll-margin-top:calc(var(--nav-h) + 12px)}
     color:var(--cta-ink);background:var(--cta);padding:.75rem 1.4rem;margin-top:8px;text-align:center;
   }
   .m-tools{display:flex;gap:8px;margin:12px 0}
-  .cookie{left:12px;right:12px;bottom:auto;top:calc(var(--nav-h) + .5rem);max-width:none}
-  .cookie:not(.show){transform:translateY(calc(-100% - 8rem))}
+  /* Keep cookie bottom-right on ≤900px: docking under nav covered the H1. */
+  .cookie{left:auto;right:12px;bottom:12px;top:auto;max-width:min(340px,calc(100vw - 24px))}
+  .cookie:not(.show){transform:translateY(calc(100% + 2rem))}
   .cookie.show{transform:none}
 }
 @media (max-width:700px){
@@ -276,6 +278,7 @@ section{scroll-margin-top:calc(var(--nav-h) + 12px)}
 }
 
 .visit h2,.visit h3{color:var(--stage-ink)}
+.profile.hot h2,.profile.hot h3{color:var(--volt-ink)}
 .visit a.btn-ghost{color:var(--stage-ink);border-color:#4F5100}
 [data-theme="dark"] a:not(.btn){color:var(--link)}
 [data-theme="dark"] .nav-links a,
@@ -662,6 +665,8 @@ section{scroll-margin-top:calc(var(--nav-h) + 12px)}
     "news.cta": "Abrir el correo",
     "news.err": "Necesitamos un correo con @ para redactar el mensaje.",
     "news.thanks": "Se abre tu cliente de correo. Si no, escríbenos a lotes@quiebre.madrid.",
+    "news.mail_subject": "Lote QUIEBRE",
+    "news.mail_body": "Hola QUIEBRE, quiero el aviso del lote.\nMi correo: {email}",
     "news.honest": "No hay lista oculta: el envío abre tu programa de correo hacia <a href=\"mailto:lotes@quiebre.madrid\">lotes@quiebre.madrid</a>. Si no quieres eso, no lo pulses.",
     "cookie.body": "Solo guardamos idioma, tema y si cerraste este aviso. Nada de analítica.",
     "cookie.ok": "De acuerdo",
@@ -777,6 +782,8 @@ section{scroll-margin-top:calc(var(--nav-h) + 12px)}
     "news.cta": "Open the email",
     "news.err": "We need an address with @ to draft the message.",
     "news.thanks": "Your mail app should open. If not, write to lotes@quiebre.madrid.",
+    "news.mail_subject": "QUIEBRE lot",
+    "news.mail_body": "Hello QUIEBRE, I want the lot notice.\nMy email: {email}",
     "news.honest": "There is no hidden list: this opens your mail app to <a href=\"mailto:lotes@quiebre.madrid\">lotes@quiebre.madrid</a>. Skip it if you don’t want that.",
     "cookie.body": "We only store language, theme, and whether you dismissed this. No analytics.",
     "cookie.ok": "OK",
@@ -892,6 +899,8 @@ section{scroll-margin-top:calc(var(--nav-h) + 12px)}
     "news.cta": "Ouvrir le mail",
     "news.err": "Il nous faut une adresse avec @ pour rédiger le message.",
     "news.thanks": "Ton client mail devrait s’ouvrir. Sinon, écris à lotes@quiebre.madrid.",
+    "news.mail_subject": "Lot QUIEBRE",
+    "news.mail_body": "Bonjour QUIEBRE, je veux l’avis du lot.\nMon courriel : {email}",
     "news.honest": "Pas de liste cachée : l’envoi ouvre ton mail vers <a href=\"mailto:lotes@quiebre.madrid\">lotes@quiebre.madrid</a>. Si tu n’en veux pas, ne clique pas.",
     "cookie.body": "On ne stocke que la langue, le thème, et si tu as fermé cet avis. Pas d’analytique.",
     "cookie.ok": "D’accord",
@@ -1007,6 +1016,8 @@ section{scroll-margin-top:calc(var(--nav-h) + 12px)}
     "news.cta": "Mail öffnen",
     "news.err": "Wir brauchen eine Adresse mit @, um die Nachricht zu schreiben.",
     "news.thanks": "Dein Mailprogramm sollte aufgehen. Sonst an lotes@quiebre.madrid.",
+    "news.mail_subject": "Charge QUIEBRE",
+    "news.mail_body": "Hallo QUIEBRE, ich möchte die Charge-Benachrichtigung.\nMeine E-Mail: {email}",
     "news.honest": "Keine versteckte Liste: der Klick öffnet dein Mailprogramm an <a href=\"mailto:lotes@quiebre.madrid\">lotes@quiebre.madrid</a>. Wenn du das nicht willst, nicht klicken.",
     "cookie.body": "Wir speichern nur Sprache, Thema und ob du diesen Hinweis geschlossen hast. Keine Analytik.",
     "cookie.ok": "In Ordnung",
@@ -1122,6 +1133,8 @@ section{scroll-margin-top:calc(var(--nav-h) + 12px)}
     "news.cta": "Apri la mail",
     "news.err": "Ci serve un indirizzo con @ per scrivere il messaggio.",
     "news.thanks": "Dovrebbe aprirsi il client. Altrimenti scrivi a lotes@quiebre.madrid.",
+    "news.mail_subject": "Lotto QUIEBRE",
+    "news.mail_body": "Ciao QUIEBRE, voglio l’avviso del lotto.\nLa mia email: {email}",
     "news.honest": "Niente lista nascosta: l’invio apre la mail verso <a href=\"mailto:lotes@quiebre.madrid\">lotes@quiebre.madrid</a>. Se non lo vuoi, non premere.",
     "cookie.body": "Salviamo solo lingua, tema e se hai chiuso questo avviso. Niente analitica.",
     "cookie.ok": "Va bene",
@@ -1237,6 +1250,8 @@ section{scroll-margin-top:calc(var(--nav-h) + 12px)}
     "news.cta": "Abrir o correio",
     "news.err": "Precisámos de um correio com @ para redigir a mensagem.",
     "news.thanks": "Abre o teu cliente de correio. Se não, escreve para lotes@quiebre.madrid.",
+    "news.mail_subject": "Lote QUIEBRE",
+    "news.mail_body": "Olá QUIEBRE, quero o aviso do lote.\nO meu correio: {email}",
     "news.honest": "Não há lista escondida: o envio abre o teu correio para <a href=\"mailto:lotes@quiebre.madrid\">lotes@quiebre.madrid</a>. Se não quiseres isso, não carregues.",
     "cookie.body": "Só guardámos idioma, tema e se fechaste este aviso. Sem analítica.",
     "cookie.ok": "De acordo",
@@ -1453,8 +1468,9 @@ section{scroll-margin-top:calc(var(--nav-h) + 12px)}
         if (nlMsg) { nlMsg.textContent = I18N[lang]['news.err']; nlMsg.className = 'nl-msg err'; }
         return;
       }
-      var subject = 'Lote QUIEBRE';
-      var body = 'Hola QUIEBRE, quiero el aviso del lote.\nMi correo: ' + email;
+      var subject = I18N[lang]['news.mail_subject'] || 'Lote QUIEBRE';
+      var bodyTpl = I18N[lang]['news.mail_body'] || ('Hola QUIEBRE, quiero el aviso del lote.' + '\n' + 'Mi correo: {email}');
+      var body = String(bodyTpl).split('{email}').join(email);
       window.location.href = 'mailto:lotes@quiebre.madrid?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       if (nlMsg) { nlMsg.textContent = I18N[lang]['news.thanks']; nlMsg.className = 'nl-msg ok'; }
     });
