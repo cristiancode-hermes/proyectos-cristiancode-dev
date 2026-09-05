@@ -73,7 +73,7 @@
   --soft:#161616;
   --link:#7FB0F5;
   --ring:#7FB0F5;
-  --pl-muted:#6E6E76;
+  --pl-muted:#A6A6A6;
 }
 /* ---------- reset & base ---------- */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -296,6 +296,7 @@ section.block{padding:clamp(64px,9vw,120px) 0}
 .cover figcaption{display:flex;align-items:baseline;gap:.7rem;padding:1rem 0 1.1rem}
 .cover figcaption .lab{min-width:0;flex:1 1 auto;font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);white-space:normal}
 .cover figcaption .meta{flex:none;font-family:'IBM Plex Mono',monospace;font-size:.64rem;letter-spacing:.05em;white-space:nowrap;color:var(--pl-muted)}
+[data-theme="dark"] .cover figcaption .meta{color:var(--muted)}
 /* manifiesto */
 .manifest{position:relative;background:var(--stage);color:var(--stage-ink);border-top:1px solid var(--stage-line);border-bottom:1px solid var(--stage-line)}
 .manifest-inner{max-width:840px;margin:0 auto;padding:clamp(72px,10vw,130px) 24px;text-align:center;position:relative}
